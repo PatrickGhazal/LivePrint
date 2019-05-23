@@ -3,5 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="open_camera">Game on !</string>
     <string name="get_book">Don\'t have the book yet? Get one <a href="http://www.google.com">HERE</a></string>
-
+    <string name="intro1">Welcome to the National Treasure Hunt App ! </string>
+    <string name="intro2">Scan photos from the book <i>A Century of NHL Memories</i> to <b>find hidden treasures</b> and <b>win amazing prizes</b> !</string>
+    <string name="intro3"><b>START BY SCANNING THE BOOK COVER!</b><i>Tip: Simply hold your phone over the image. No need to click.</i></string>
 </resources>
