@@ -2,5 +2,6 @@
     <string name="app_name">LivePrint</string>
     <string name="action_settings">Settings</string>
     <string name="open_camera">Game on !</string>
+    <string name="get_book">Don\'t have the book yet? Get one <a href="http://www.google.com">HERE</a></string>
 
 </resources>
