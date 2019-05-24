@@ -14,53 +14,75 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_height="100dp"
-            android:layout_width="600dp"
-            android:src="@drawable/load_screen" />
+            android:layout_height="300px"
+            android:layout_width="1500px"
+            android:layout_gravity="center"
+            android:src="@drawable/top_banner" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="37dp"
+            android:background="#FAFAFA" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/intro1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center"
+            android:text="@string/intro1_welcome" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/intro2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center"
+            android:text="@string/intro2_scan_photos" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/intro3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center"
+            android:text="@string/intro3_to_find" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro4_start_by" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro5_tip" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:background="#FAFAFA" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center"
             android:onClick="openCamera"
             android:text="@string/open_camera"
             android:background="@color/cardview_dark_background"
             android:textColor="@color/cardview_light_background" />
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:background="#FAFAFA" />
+
         <TextView
             android:id="@+id/get_book_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/get_book" />
 
     </LinearLayout>
