@@ -7,5 +7,6 @@
     <string name="intro2_scan_photos">Scan photos from the book <i>A Century of NHL Memories</i></string>
     <string name="intro3_to_find">to <b>find hidden treasures</b> and <b>win amazing prizes</b> !</string>
     <string name="intro4_start_by"><b>START BY SCANNING THE BOOK COVER!</b></string>
-    <string name="intro5_tip"><i>Tip: Simply hold your phone over the image. No need to click.</i></string>
+    <string name="intro5_tip"><i>Tip: Simply hold your phone over the image.</i></string>
+    <string name="intro6_tip2"><i>No need to click !</i></string>
 </resources>
