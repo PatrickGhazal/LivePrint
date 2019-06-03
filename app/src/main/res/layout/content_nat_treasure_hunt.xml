@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".NatTreasureHunt"
+    tools:showIn="@layout/activity_nat_treasure_hunt">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="115dp"
+            android:src="@drawable/top_banner" />
+
+        <!--width = 1500px, height = 300px-->
+        <View
+            android:id="@+id/empty_block_1"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro1_welcome" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro2_scan_photos" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro3_to_find" />
+
+        <View
+            android:id="@+id/empty_block_2"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro4_start_by" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro5_tip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/intro6_tip2" />
+
+        <View
+            android:id="@+id/empty_block_3"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="#FAFAFA" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/cardview_dark_background"
+            android:onClick="openCamera"
+            android:text="@string/open_camera"
+            android:textColor="@color/cardview_light_background" />
+
+        <View
+            android:id="@+id/empty_block_4"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:id="@+id/get_book_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/get_book" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

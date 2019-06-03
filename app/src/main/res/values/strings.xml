@@ -9,4 +9,9 @@
     <string name="intro4_start_by"><b>START BY SCANNING THE BOOK COVER!</b></string>
     <string name="intro5_tip"><i>Tip: Simply hold your phone over the image.</i></string>
     <string name="intro6_tip2"><i>No need to click !</i></string>
+    <string name="title_activity_lphome_page">LPHomePage</string>
+    <string name="title_activity_treasure_hunt">TreasureHunt</string>
+    <string name="title_activity_nat_treasure_hunt">NatTreasureHunt</string>
+    <string name="live_print">Open LP</string>
+    <string name="treasure_hunt">Open TH</string>
 </resources>
