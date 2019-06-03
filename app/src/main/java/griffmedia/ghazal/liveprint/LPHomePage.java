@@ -21,7 +21,7 @@ public class LPHomePage extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    public void openLP2(View v) {
+    public void openCompanyList(View v) {
         Intent intent = new Intent(this, LPListPage.class);
         startActivity(intent);
     }

@@ -15,7 +15,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
@@ -38,7 +37,7 @@ public class Login extends AppCompatActivity {
 
     private void fillCredentials() {
 
-         credentials = new ArrayList<String>();
+        credentials = new ArrayList<String>();
 
         try {
             File credFiles = new File(credentialsPath);
@@ -81,8 +80,5 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-
-
 
 }

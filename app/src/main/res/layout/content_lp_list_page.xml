@@ -17,21 +17,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/lp1_choose_company"/>
+            android:text="@string/lp1_choose_company" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/lp1_choose_company2"/>
+            android:text="@string/lp1_choose_company2" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
-            android:text="@string/lp1_button_open_camera"
             android:onClick="openCamera"
+            android:text="@string/lp1_button_open_camera"
             android:textColor="@color/cardview_light_background" />
 
     </LinearLayout>

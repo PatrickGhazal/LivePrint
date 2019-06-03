@@ -42,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
+            android:onClick="openCompanyList"
             android:text="@string/lp0_button_open_lp"
-            android:onClick="openLP2"
             android:textColor="@color/cardview_light_background" />
 
         <View
@@ -63,10 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
-            android:text="@string/lp0_button_login"
             android:onClick="openLogin"
+            android:text="@string/lp0_button_login"
             android:textColor="@color/cardview_light_background" />
-
 
     </LinearLayout>
 

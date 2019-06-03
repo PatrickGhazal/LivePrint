@@ -22,5 +22,4 @@
 
     <include layout="@layout/content_lp_list_page" />
 
-
 </android.support.design.widget.CoordinatorLayout>
