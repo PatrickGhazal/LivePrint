@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Login"
+    tools:context=".LoginPage"
     tools:showIn="@layout/activity_login">
 
     <LinearLayout
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter_user"/>
+            android:text="@string/lpc1_enter_user"/>
 
         <EditText
             android:id="@+id/lp_login_user"
@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter_pass"/>
+            android:text="@string/lpc1_enter_pass"/>
 
         <EditText
             android:id="@+id/lp_login_pass"

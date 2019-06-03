@@ -12,11 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ControlPanel"
-            android:label="@string/title_activity_control_panel"
+            android:name=".CreateLinkPage"
+            android:label="@string/title_activity_create_link_page"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Login"
+            android:name=".ControlPanel"
+            android:label="@string/title_activity_control_panel"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginPage"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -4,6 +4,8 @@
     <string name="title_activity_lphome_page">LPHomePage</string>
     <string name="title_activity_nat_treasure_hunt">NatTreasureHunt</string>
     <string name="title_activity_lplist_page">LPListPage</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_control_panel">ControlPanel</string>
     <string name="action_settings">Settings</string>
 
     <string name="th_button_open_camera">Game on !</string>
@@ -19,16 +21,13 @@
     <string name="lp0_intro1_welcome">Welcome to the LivePrint App !</string>
     <string name="lp0_intro2_user">To start using LivePrint, click the button below !</string>
     <string name="lp0_button_open_lp">Start LP !</string>
-    <string name="lp1_button_open_camera">Open Camera</string>
-    <string name="lp1_choose_company">Select the company(ies) for which</string>
-    <string name="lp1_choose_company2">you would like to use LivePrint.</string>
     <string name="lp0_intro3_client">Otherwise, click below to access your Company\'s Control Panel</string>
     <string name="lp0_button_login">Login</string>
-    <string name="title_activity_login">Login</string>
-    <string name="title_activity_control_panel">ControlPanel</string>
-    <string name="enter_user">Enter your Username:</string>
-    <string name="enter_pass">Enter your Password:</string>
-
-
+    <string name="lpu1_choose_company">Select the company(ies) for which</string>
+    <string name="lpu1_choose_company2">you would like to use LivePrint.</string>
+    <string name="lpu1_button_open_camera">Open Camera</string>
+    <string name="lpc1_enter_user">Enter your Username:</string>
+    <string name="lpc1_enter_pass">Enter your Password:</string>
+    <string name="title_activity_create_link_page">CreateLinkPage</string>
 
 </resources>
