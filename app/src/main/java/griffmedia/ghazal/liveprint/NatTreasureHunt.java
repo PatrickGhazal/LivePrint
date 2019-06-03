@@ -1,5 +1,6 @@
 package griffmedia.ghazal.liveprint;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,6 +35,11 @@ public class NatTreasureHunt extends AppCompatActivity {
         getBookTV.setMovementMethod(LinkMovementMethod.getInstance());
 
         setFormatting();
+    }
+
+    public void openCamera(View v) {
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivity(intent);
     }
 
     private void setFormatting() {

@@ -29,19 +29,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/intro1_welcome" />
+            android:text="@string/th_intro1_welcome" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/intro2_scan_photos" />
+            android:text="@string/th_intro2_scan_photos" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/intro3_to_find" />
+            android:text="@string/th_intro3_to_find" />
 
         <View
             android:id="@+id/empty_block_2"
@@ -53,19 +53,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/intro4_start_by" />
+            android:text="@string/th_intro4_start_by" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/intro5_tip" />
+            android:text="@string/th_intro5_tip" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/intro6_tip2" />
+            android:text="@string/th_intro6_tip2" />
 
         <View
             android:id="@+id/empty_block_3"
@@ -79,7 +79,7 @@
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
             android:onClick="openCamera"
-            android:text="@string/open_camera"
+            android:text="@string/th_button_open_camera"
             android:textColor="@color/cardview_light_background" />
 
         <View
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/get_book" />
+            android:text="@string/th_get_book" />
 
     </LinearLayout>
 

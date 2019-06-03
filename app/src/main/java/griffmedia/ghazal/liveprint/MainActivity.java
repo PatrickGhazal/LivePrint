@@ -51,19 +51,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void openCamera(View v) {
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+    public void openLP(View v) {
+        Intent intent = new Intent(this, LPHomePage.class);
         startActivity(intent);
     }
 
-    public void openLP(View v) {
-        Intent i = new Intent(this, LPHomePage.class);
-        startActivity(i);
-    }
-
     public void openTH(View v) {
-        Intent i = new Intent(this, NatTreasureHunt.class);
-        startActivity(i);
+        Intent intent = new Intent(this, NatTreasureHunt.class);
+        startActivity(intent);
     }
 
 }

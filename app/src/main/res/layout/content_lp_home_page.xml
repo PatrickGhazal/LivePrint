@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".LPHomePage"
+    tools:showIn="@layout/activity_lp_home_page">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/lp_empty_block_1"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lp0_intro1_welcome" />
+
+        <View
+            android:id="@+id/lp_empty_block_2"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lp0_intro2_user" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/cardview_dark_background"
+            android:text="@string/lp0_button_open_lp"
+            android:onClick="openLP2"
+            android:textColor="@color/cardview_light_background" />
+
+        <View
+            android:id="@+id/lp_empty_block_3"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lp0_intro3_client" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/cardview_dark_background"
+            android:text="@string/lp0_button_login"
+            android:onClick="openLogin"
+            android:textColor="@color/cardview_light_background" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
