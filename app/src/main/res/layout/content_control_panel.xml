@@ -8,4 +8,16 @@
     tools:context=".ControlPanel"
     tools:showIn="@layout/activity_control_panel">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/empty2"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FF0000" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

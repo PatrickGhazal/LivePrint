@@ -13,21 +13,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <View
+            android:id="@+id/empty"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_user"/>
+
         <EditText
             android:id="@+id/lp_login_user"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/empty2"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_pass"/>
 
         <EditText
             android:id="@+id/lp_login_pass"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/empty3"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="#FAFAFA" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:onClick="login"
-            android:text="test" />
+            android:text="Login" />
 
     </LinearLayout>
 

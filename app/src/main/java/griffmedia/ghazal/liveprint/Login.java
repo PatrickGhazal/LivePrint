@@ -1,6 +1,8 @@
 package griffmedia.ghazal.liveprint;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,7 +23,12 @@ import io.fabric.sdk.android.Fabric;
 
 public class Login extends AppCompatActivity {
 
-    private static final String credentialsPath = "/src/res/credentials.txt";
+    /*
+
+    //TODO: fix fillCredentials method, make path relative, remove hardcodeCreds
+    private static final String credentialsPath = "app\\src\\creds.txt";
+
+    */
     private static List<String> credentials;
 
     @Override
@@ -32,38 +39,57 @@ public class Login extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fillCredentials();
+        //fillCredentials();
+        hardcodeCreds();
     }
 
-    private void fillCredentials() {
-
+    private void hardcodeCreds() {
         credentials = new ArrayList<String>();
 
-        try {
-            File credFiles = new File(credentialsPath);
-            FileReader fr = new FileReader(credFiles);
-            BufferedReader br = new BufferedReader(fr);
+        credentials.add("u1-hello");
+        credentials.add("u2-mypass");
+        credentials.add("u3-paq");
 
-            String line = br.readLine();
-            while (line != null) {
-                credentials.add(line);
-                line = br.readLine();
-            }
-
-        } catch (FileNotFoundException e) {
-
-        } catch (IOException e) {
-
-        }
-
+        View empty = findViewById(R.id.empty2);
+        empty.setBackgroundColor(Color.parseColor("#00FF00"));
     }
 
-    public static List<String> getCredentials() {
-        return credentials;
-    }
+//    private void fillCredentials() {
+//
+//        credentials = new ArrayList<String>();
+//
+//        try {
+//            File credFile = new File(credentialsPath);
+//            FileReader fr = new FileReader(credFile);
+//            BufferedReader br = new BufferedReader(fr);
+//
+//            String line = br.readLine();
+//            System.out.println(line);
+//            while (line != null) {
+//                System.out.println("------------------------------");
+//                System.out.println(line);
+//                System.out.println("------------------------------");
+//                credentials.add(line);
+//                line = br.readLine();
+//            }
+//
+//        } catch (FileNotFoundException e) {
+//            System.out.println("file not found");
+//
+//        } catch (IOException e) {
+//            System.out.println("io exception");
+//        }
+//
+//        View empty = findViewById(R.id.empty2);
+//        empty.setBackgroundColor(Color.parseColor("#FF0000"));
+//
+//    }
 
     public boolean validLogin(String user, String pass) {
-        return getCredentials().contains(user += "-" + pass);
+        String cred = user + "-" + pass;
+        System.out.println(cred);
+        System.out.println(credentials.get(2));
+        return credentials.contains(cred);
     }
 
     public void login(View v) {

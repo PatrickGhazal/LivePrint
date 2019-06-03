@@ -26,6 +26,9 @@
     <string name="lp0_button_login">Login</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_control_panel">ControlPanel</string>
+    <string name="enter_user">Enter your Username:</string>
+    <string name="enter_pass">Enter your Password:</string>
+
 
 
 </resources>
