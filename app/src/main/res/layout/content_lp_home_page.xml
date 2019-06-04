@@ -43,7 +43,7 @@
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
             android:onClick="openCompanyList"
-            android:text="@string/lp0_button_open_lp"
+            android:text="@string/lp0_button_start_lp"
             android:textColor="@color/cardview_light_background" />
 
         <View

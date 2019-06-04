@@ -22,4 +22,12 @@ public class CreateLinkPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    public void loadPhoto(View v) {
+
+    }
+
+    public void loadVideo(View v) {
+
+    }
+
 }

@@ -56,7 +56,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="login"
-            android:text="Login" />
+            android:text="@string/lpc1_login" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="override"
+            android:text="Override" />
 
     </LinearLayout>
 

@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
             android:onClick="openLP"
-            android:text="@string/button_live_print"
+            android:text="@string/button_open_lp"
             android:textColor="@color/cardview_light_background" />
 
         <Button
@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:background="@color/cardview_dark_background"
             android:onClick="openTH"
-            android:text="@string/button_treasure_hunt"
+            android:text="@string/button_open_th"
             android:textColor="@color/cardview_light_background" />
 
     </LinearLayout>

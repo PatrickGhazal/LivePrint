@@ -18,17 +18,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import io.fabric.sdk.android.Fabric;
 
 public class LoginPage extends AppCompatActivity {
 
-    /*
 
     //TODO: fix fillCredentials method, make path relative, remove hardcodeCreds
-    private static final String credentialsPath = "app\\src\\creds.txt";
+    private static final String fileSep = System.getProperty("file.separator");
+//    private static final String credentialsPath = fileSep + "src" + fileSep + "main" + fileSep + "creds.txt";
+    //private static final String credentialsPath = "C:\\Users\\Admin\\android-workspace\\LivePrint\\app\\src\\main\\creds.txt";
+    private static final String credentialsPath = "src\\main\\creds.txt";
 
-    */
     private static List<String> credentials;
 
     @Override
@@ -39,8 +41,8 @@ public class LoginPage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //fillCredentials();
-        hardcodeCreds();
+        fillCredentials();
+        //hardcodeCreds();
     }
 
     private void hardcodeCreds() {
@@ -59,12 +61,10 @@ public class LoginPage extends AppCompatActivity {
 //        credentials = new ArrayList<String>();
 //
 //        try {
-//            File credFile = new File(credentialsPath);
-//            FileReader fr = new FileReader(credFile);
+//            FileReader fr = new FileReader(credentialsPath);
 //            BufferedReader br = new BufferedReader(fr);
 //
 //            String line = br.readLine();
-//            System.out.println(line);
 //            while (line != null) {
 //                System.out.println("------------------------------");
 //                System.out.println(line);
@@ -85,6 +85,27 @@ public class LoginPage extends AppCompatActivity {
 //
 //    }
 
+    private void fillCredentials() {
+
+        try {
+            File file = new File(credentialsPath);
+            System.out.println("----------------------" + file.createNewFile());
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+                System.out.println("--------------" + line + "----------");
+                credentials.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("file was not found");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public boolean validLogin(String user, String pass) {
         String cred = user + "-" + pass;
         return credentials.contains(cred);
@@ -103,6 +124,11 @@ public class LoginPage extends AppCompatActivity {
             Intent intent = new Intent(this, ControlPanel.class);
             startActivity(intent);
         }
+    }
+
+    public void override(View v) {
+        Intent intent = new Intent(this, ControlPanel.class);
+        startActivity(intent);
     }
 
 }

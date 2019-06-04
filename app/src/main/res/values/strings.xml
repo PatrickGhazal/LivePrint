@@ -6,6 +6,7 @@
     <string name="title_activity_lplist_page">LPListPage</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_control_panel">ControlPanel</string>
+    <string name="title_activity_create_link_page">CreateLinkPage</string>
     <string name="action_settings">Settings</string>
 
     <string name="th_button_open_camera">Game on !</string>
@@ -16,11 +17,11 @@
     <string name="th_intro4_start_by"><b>START BY SCANNING THE BOOK COVER!</b></string>
     <string name="th_intro5_tip"><i>Tip: Simply hold your phone over the image.</i></string>
     <string name="th_intro6_tip2"><i>No need to click !</i></string>
-    <string name="button_live_print">Open LP</string>
-    <string name="button_treasure_hunt">Open TH</string>
+    <string name="button_open_lp">Open LP</string>
+    <string name="button_open_th">Open TH</string>
     <string name="lp0_intro1_welcome">Welcome to the LivePrint App !</string>
     <string name="lp0_intro2_user">To start using LivePrint, click the button below !</string>
-    <string name="lp0_button_open_lp">Start LP !</string>
+    <string name="lp0_button_start_lp">Start LP !</string>
     <string name="lp0_intro3_client">Otherwise, click below to access your Company\'s Control Panel</string>
     <string name="lp0_button_login">Login</string>
     <string name="lpu1_choose_company">Select the company(ies) for which</string>
@@ -28,6 +29,11 @@
     <string name="lpu1_button_open_camera">Open Camera</string>
     <string name="lpc1_enter_user">Enter your Username:</string>
     <string name="lpc1_enter_pass">Enter your Password:</string>
-    <string name="title_activity_create_link_page">CreateLinkPage</string>
+    <string name="lpc1_login">Login</string>
+    <string name="lpc2_create_link">Create a Link</string>
+    <string name="lpc3_upload_photo">First, choose the image to be recognized.</string>
+    <string name="lpc3_upload_video">Then, choose the video to be played upon recognition.</string>
+    <string name="lpc3_button_photo">Upload Photo</string>
+    <string name="lpc3_button_video">Upload Video</string>
 
 </resources>

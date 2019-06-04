@@ -13,17 +13,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/empty2"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#FF0000" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="createLink"
-            android:text="Create a Link"/>
+            android:text="@string/lpc2_create_link"/>
 
     </LinearLayout>
 
