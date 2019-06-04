@@ -13,8 +13,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <View
+            android:id="@+id/empty_view5"
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:background="#FAFAFA" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/lpc3_upload_photo"/>
@@ -22,17 +28,37 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/lpc3_button_photo"
             android:onClick="loadPhoto"/>
 
         <View
             android:id="@+id/empty_view"
             android:layout_width="fill_parent"
-            android:layout_height="20dp"
+            android:layout_height="10dp"
             android:background="#FAFAFA" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lpc3_selected_image"/>
+
+        <TextView
+            android:id="@+id/selected_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""/>
+
+        <View
+            android:id="@+id/empty_view2"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/lpc3_upload_video"/>
@@ -40,8 +66,48 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/lpc3_button_video"
             android:onClick="loadVideo"/>
+
+        <View
+            android:id="@+id/empty_view3"
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="#FAFAFA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lpc3_selected_video"/>
+
+        <TextView
+            android:id="@+id/selected_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""/>
+
+        <View
+            android:id="@+id/empty_view4"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="#FAFAFA" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/lpc3_button_create"
+            android:onClick="createLink"/>
+
+        <TextView
+            android:id="@+id/link_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""/>
 
     </LinearLayout>
 

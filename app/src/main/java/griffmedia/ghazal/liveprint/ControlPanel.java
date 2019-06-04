@@ -21,7 +21,7 @@ public class ControlPanel extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    public void createLink(View v) {
+    public void openCreateLink(View v) {
         Intent intent = new Intent(this, CreateLinkPage.class);
         startActivity(intent);
     }
