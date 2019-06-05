@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <View
-            android:id="@+id/lp_empty_block_1"
+            android:id="@+id/lp0_empty1"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:background="#FAFAFA" />
@@ -26,7 +26,7 @@
             android:text="@string/lp0_intro1_welcome" />
 
         <View
-            android:id="@+id/lp_empty_block_2"
+            android:id="@+id/lp0_empty2"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:background="#FAFAFA" />
@@ -47,7 +47,7 @@
             android:textColor="@color/cardview_light_background" />
 
         <View
-            android:id="@+id/lp_empty_block_3"
+            android:id="@+id/lp0_empty3"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:background="#FAFAFA" />

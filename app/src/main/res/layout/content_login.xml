@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <View
-            android:id="@+id/empty"
+            android:id="@+id/lpc1_empty1"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:background="#FAFAFA" />
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content" />
 
         <View
-            android:id="@+id/empty2"
+            android:id="@+id/lpc1_empty2"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:background="#FAFAFA" />
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content" />
 
         <View
-            android:id="@+id/empty3"
+            android:id="@+id/lpc1_empty3"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:background="#FAFAFA" />

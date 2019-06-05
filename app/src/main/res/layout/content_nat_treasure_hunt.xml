@@ -20,7 +20,7 @@
 
         <!--width = 1500px, height = 300px-->
         <View
-            android:id="@+id/empty_block_1"
+            android:id="@+id/th_empty1"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:background="#FAFAFA" />
@@ -44,7 +44,7 @@
             android:text="@string/th_intro3_to_find" />
 
         <View
-            android:id="@+id/empty_block_2"
+            android:id="@+id/th_empty2"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:background="#FAFAFA" />
@@ -68,7 +68,7 @@
             android:text="@string/th_intro6_tip2" />
 
         <View
-            android:id="@+id/empty_block_3"
+            android:id="@+id/th_empty3"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:background="#FAFAFA" />
@@ -83,7 +83,7 @@
             android:textColor="@color/cardview_light_background" />
 
         <View
-            android:id="@+id/empty_block_4"
+            android:id="@+id/th_empty4"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:background="#FAFAFA" />

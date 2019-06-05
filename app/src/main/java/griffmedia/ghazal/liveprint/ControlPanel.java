@@ -12,6 +12,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class ControlPanel extends AppCompatActivity {
 
+    private int currentLinks = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

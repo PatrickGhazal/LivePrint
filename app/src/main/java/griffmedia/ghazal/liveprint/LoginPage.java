@@ -52,8 +52,6 @@ public class LoginPage extends AppCompatActivity {
         credentials.add("u2-mypass");
         credentials.add("u3-paq");
 
-        View empty = findViewById(R.id.empty2);
-        empty.setBackgroundColor(Color.parseColor("#00FF00"));
     }
 
 //    private void fillCredentials() {

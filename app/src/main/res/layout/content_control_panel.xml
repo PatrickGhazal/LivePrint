@@ -32,6 +32,12 @@
             android:layout_gravity="center"
             android:text="@string/lpc2_intro_modify"/>
 
+        <TextView
+            android:id="@+id/existing_links"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
