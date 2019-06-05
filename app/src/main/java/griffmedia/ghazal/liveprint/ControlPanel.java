@@ -25,7 +25,7 @@ public class ControlPanel extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        resetExistingLinks();
+        setFormatting();
     }
 
     public void openCreateLink(View v) {
@@ -39,7 +39,9 @@ public class ControlPanel extends AppCompatActivity {
     }
 
     private void setFormatting() {
-        // the four gaps
+
+        resetExistingLinks();
+
         View v1 = findViewById(R.id.lpc2_empty1);
         View v2 = findViewById(R.id.lpc2_empty2);
 

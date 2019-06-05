@@ -27,8 +27,6 @@ public class LPHomePage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        links = new ArrayList<Link>();
-
         setFormatting();
     }
 
@@ -43,6 +41,9 @@ public class LPHomePage extends AppCompatActivity {
     }
 
     private void setFormatting() {
+
+        links = new ArrayList<Link>();
+
         View v1 = findViewById(R.id.lp0_empty1);
         View v2 = findViewById(R.id.lp0_empty2);
         View v3 = findViewById(R.id.lp0_empty3);

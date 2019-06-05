@@ -43,6 +43,8 @@ public class LoginPage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setFormatting();
+
         fillCredentials();
         //hardcodeCreds();
     }
