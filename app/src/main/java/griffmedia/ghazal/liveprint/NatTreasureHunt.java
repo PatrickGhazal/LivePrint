@@ -1,7 +1,6 @@
 package griffmedia.ghazal.liveprint;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
@@ -53,15 +51,7 @@ public class NatTreasureHunt extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            v1.setBackgroundColor(Color.parseColor("#EEEEEE"));
-            v2.setBackgroundColor(Color.parseColor("#EEEEEE"));
-            v3.setBackgroundColor(Color.parseColor("#EEEEEE"));
-            v4.setBackgroundColor(Color.parseColor("#EEEEEE"));
-        } else {
-            v1.setBackgroundColor(Color.parseColor("#FAFAFA"));
-            v2.setBackgroundColor(Color.parseColor("#FAFAFA"));
-            v3.setBackgroundColor(Color.parseColor("#FAFAFA"));
-            v4.setBackgroundColor(Color.parseColor("#FAFAFA"));
+            Funcs.setBGColour("#EEEEEE", v1, v2, v3, v4);
         }
     }
 
@@ -75,22 +65,10 @@ public class NatTreasureHunt extends AppCompatActivity {
         if (fullWindowHeight < 1000)
             density /= 1.5;
 
-        setGapHeight(v1, resizeHeight(gapPerc1, fullWindowHeight), density);
-        setGapHeight(v2, resizeHeight(gapPerc2, fullWindowHeight), density);
-        setGapHeight(v3, resizeHeight(gapPerc34, fullWindowHeight), density);
-        setGapHeight(v4, resizeHeight(gapPerc34, fullWindowHeight), density);
-    }
-
-    // compute height from percentage of total height
-    private int resizeHeight(double gapPerc, double windowHeight) {
-        return (int) Math.round(gapPerc * windowHeight / 100.0);
-    }
-
-    // set the newly computed height
-    private void setGapHeight(View view, int heightVal, double density) {
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = (int) Math.round(heightVal * density);
-        view.setLayoutParams(layoutParams);
+        Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc1, fullWindowHeight), density);
+        Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc2, fullWindowHeight), density);
+        Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc34, fullWindowHeight), density);
+        Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc34, fullWindowHeight), density);
     }
 
 }
