@@ -9,11 +9,15 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import com.crashlytics.android.Crashlytics;
 
+import java.util.ArrayList;
+
 import io.fabric.sdk.android.Fabric;
 
 public class LPHomePage extends AppCompatActivity {
 
     private static final double gapPerc = 1.75;
+
+    private static ArrayList<Link> links;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,8 @@ public class LPHomePage extends AppCompatActivity {
         setContentView(R.layout.activity_lp_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        links = new ArrayList<Link>();
 
         setFormatting();
     }
@@ -37,7 +43,6 @@ public class LPHomePage extends AppCompatActivity {
     }
 
     private void setFormatting() {
-        // the four gaps
         View v1 = findViewById(R.id.lp0_empty1);
         View v2 = findViewById(R.id.lp0_empty2);
         View v3 = findViewById(R.id.lp0_empty3);
@@ -63,6 +68,14 @@ public class LPHomePage extends AppCompatActivity {
         Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
+    }
+
+    public static ArrayList<Link> getLinks() {
+        return links;
+    }
+
+    public static void addLink(Link link) {
+        links.add(link);
     }
 
 }

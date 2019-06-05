@@ -132,7 +132,6 @@ public class LoginPage extends AppCompatActivity {
     }
 
     private void setFormatting() {
-        // the four gaps
         View v1 = findViewById(R.id.lpc1_empty1);
         View v2 = findViewById(R.id.lpc1_empty2);
         View v3 = findViewById(R.id.lpc1_empty3);

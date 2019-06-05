@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 public class Funcs {
 
     // compute height from percentage of total height
@@ -22,6 +24,21 @@ public class Funcs {
         for (View v : views) {
             v.setBackgroundColor(Color.parseColor(colour));
         }
+    }
+
+    public static String linksToString(String company) {
+        ArrayList<Link> links = LPHomePage.getLinks();
+
+        String returned = "";
+
+        for (Link link : links) {
+            if (link.getCompany().equals(company)) {
+                String newLink = link.getPhotoName() + "/" + link.getVideoName() + "\n";
+                returned += newLink;
+            }
+        }
+
+        return returned;
     }
 
 }

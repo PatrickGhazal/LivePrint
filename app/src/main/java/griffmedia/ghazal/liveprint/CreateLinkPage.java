@@ -1,5 +1,6 @@
 package griffmedia.ghazal.liveprint;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -49,18 +50,11 @@ public class CreateLinkPage extends AppCompatActivity {
 
         if (!selectedImage.equals("") && !selectedVideo.equals("")) {
 
-            String link = selectedImage + "/" + selectedVideo;
+            Link newLink = new Link(selectedImage, selectedVideo, "defaultCo");
+            LPHomePage.addLink(newLink);
 
-            View inflatedView = getLayoutInflater().inflate(R.layout.activity_control_panel, null);
-            TextView tvExistingLinks = (TextView) inflatedView.findViewById(R.id.existing_links);
-
-            String currText = tvExistingLinks.getText().toString();
-            tvExistingLinks.setText(currText + link + "\n");
-
-            finish();
-
-//            Intent intent = new Intent(this, ControlPanel.class);
-//            startActivity(intent);
+            Intent intent = new Intent(this, ControlPanel.class);
+            startActivity(intent);
         } else {
             TextView tvSuccess = findViewById(R.id.create_success);
             tvSuccess.setText("Failure..");
@@ -68,7 +62,6 @@ public class CreateLinkPage extends AppCompatActivity {
     }
 
     private void setFormatting() {
-        // the four gaps
         View v1 = findViewById(R.id.lpc3_empty1);
         View v2 = findViewById(R.id.lpc3_empty2);
         View v3 = findViewById(R.id.lpc3_empty3);

@@ -41,7 +41,6 @@ public class NatTreasureHunt extends AppCompatActivity {
     }
 
     private void setFormatting() {
-        // the four gaps
         View v1 = findViewById(R.id.th_empty1);
         View v2 = findViewById(R.id.th_empty2);
         View v3 = findViewById(R.id.th_empty3);
