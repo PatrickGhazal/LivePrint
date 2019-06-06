@@ -34,6 +34,11 @@
             android:text="@string/lpu1_button_open_camera"
             android:textColor="@color/cardview_light_background" />
 
+        <TextView
+            android:id="@+id/comp_names"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -33,11 +33,6 @@ public class ControlPanel extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void resetExistingLinks() {
-        TextView tvExistingLinks = findViewById(R.id.existing_links);
-        tvExistingLinks.setText(Funcs.linksToString("defaultCo"));
-    }
-
     private void setFormatting() {
 
         resetExistingLinks();
@@ -51,6 +46,21 @@ public class ControlPanel extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             Funcs.setBGColour("#EEEEEE", v1, v2);
         }
+    }
+
+    private void resetExistingLinks() {
+
+//        String allLinks = "";
+//
+//        if (LPHomePage.getFileContext() != null) {
+//            allLinks = Funcs.readFromFile(LPHomePage.getFileContext(), "allLinks.txt");
+//        }
+
+        TextView tvExistingLinks = findViewById(R.id.existing_links);
+
+//        tvExistingLinks.setText(allLinks);
+
+        tvExistingLinks.setText(Funcs.linksToString("defaultCo"));
     }
 
     private void setGapSizes(View v1, View v2) {

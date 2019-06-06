@@ -23,4 +23,8 @@ public class Link {
     public String getCompany() {
         return company;
     }
+
+    public String toString() {
+        return photoName + "/" + videoName + "\n";
+    }
 }

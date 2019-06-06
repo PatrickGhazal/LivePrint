@@ -52,6 +52,8 @@ public class CreateLinkPage extends AppCompatActivity {
 
             Link newLink = new Link(selectedImage, selectedVideo, "defaultCo");
             LPHomePage.addLink(newLink);
+//            Funcs.writeToFile(this, "allLinks.txt", newLink.toString());
+//            LPHomePage.setFileContext(this);
 
             Intent intent = new Intent(this, ControlPanel.class);
             startActivity(intent);

@@ -16,7 +16,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class NatTreasureHunt extends AppCompatActivity {
 
-    // percentage of screen height that the gap should be
+    // percentage of screen height that the gaps should be
     private static final double gapPerc1 = 2.06;
     private static final double gapPerc2 = 3.62;
     private static final double gapPerc34 = 4.1;
@@ -68,6 +68,7 @@ public class NatTreasureHunt extends AppCompatActivity {
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc2, fullWindowHeight), density);
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc34, fullWindowHeight), density);
         Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc34, fullWindowHeight), density);
+
     }
 
 }
