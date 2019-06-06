@@ -22,7 +22,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class LoginPage extends AppCompatActivity {
 
-
     //TODO: fix fillCredentials method, make path relative, remove hardcodeCreds
     private static final String fileSep = System.getProperty("file.separator");
 //    private static final String credentialsPath = fileSep + "src" + fileSep + "main" + fileSep + "creds.txt";
@@ -43,7 +42,7 @@ public class LoginPage extends AppCompatActivity {
 
         setFormatting();
 
-        fillCredentials();
+        //fillCredentials();
         //hardcodeCreds();
     }
 
