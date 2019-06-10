@@ -1,15 +1,31 @@
 package griffmedia.ghazal.liveprint;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -19,6 +35,10 @@ public class CreateLinkPage extends AppCompatActivity {
     private static final double gapPerc24 = 0.88;
     private static final double gapPerc3 = 2.62;
     private static final double gapPerc5 = 4.38;
+
+    private static final int GET_FROM_GALLERY = 77;
+    private Bitmap mImageBitmap;
+    private String mCurrentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +52,94 @@ public class CreateLinkPage extends AppCompatActivity {
     }
 
     public void loadPhoto(View v) {
+
+        /* placeholder
         TextView tvImage = findViewById(R.id.selected_image);
         tvImage.setText("chosen_image.jpg");
+        */
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if (!hasPermissions(this, PERMISSIONS)) {
+                ActivityCompat.requestPermissions((Activity) this, PERMISSIONS, GET_FROM_GALLERY );
+            } else {
+                loadPhotoFullIntent();
+            }
+        } else {
+            loadPhotoFullIntent();
+        }
+    }
+
+    private void loadPhotoFullIntent() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException e) {
+                // Error occurred while creating the File
+                e.printStackTrace();
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoUri = null;
+                photoUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photoFile);
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+                startActivityForResult(cameraIntent, GET_FROM_GALLERY);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case GET_FROM_GALLERY: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    loadPhotoFullIntent();
+                } else {
+                    System.out.println("-----ERROR: Could not write-----");
+                }
+            }
+        }
+    }
+
+    private static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DCIM), "Camera");
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        return image;
     }
 
     public void loadVideo(View v) {
+
+        /* placeholder
         TextView tvVideo = findViewById(R.id.selected_video);
         tvVideo.setText("chosen_video.mp4");
+        */
     }
 
     public void createLink(View v) {
@@ -93,6 +194,20 @@ public class CreateLinkPage extends AppCompatActivity {
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc3, fullWindowHeight), density);
         Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc24, fullWindowHeight), density);
         Funcs.setGapHeight(v5, Funcs.resizeHeight(gapPerc5, fullWindowHeight), density);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == GET_FROM_GALLERY && resultCode == RESULT_OK) {
+            try {
+                mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
+
+                ImageView imageView = findViewById(R.id.disp_image);
+                imageView.setImageBitmap(mImageBitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
