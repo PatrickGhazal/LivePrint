@@ -20,8 +20,6 @@ public class LPHomePage extends AppCompatActivity {
 
     private static ArrayList<Link> links;
 
-    private static Context fileContext = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,13 +79,4 @@ public class LPHomePage extends AppCompatActivity {
     public static void addLink(Link link) {
         links.add(link);
     }
-
-    public static Context getFileContext() {
-        return fileContext;
-    }
-
-    public static void setFileContext(Context c) {
-        fileContext = c;
-    }
-
 }

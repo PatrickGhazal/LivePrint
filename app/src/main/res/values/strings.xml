@@ -27,6 +27,7 @@
     <string name="lpu1_choose_company">Select the company(ies) for which</string>
     <string name="lpu1_choose_company2">you would like to use LivePrint.</string>
     <string name="lpu1_button_open_camera">Open Camera</string>
+    <string name="lpu1a_button_select">Select</string>
     <string name="lpc1_enter_user">Enter your Username:</string>
     <string name="lpc1_enter_pass">Enter your Password:</string>
     <string name="lpc1_login">Login</string>

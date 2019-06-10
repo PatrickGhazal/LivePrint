@@ -34,12 +34,6 @@
             android:text="@string/lpu1_button_open_camera"
             android:textColor="@color/cardview_light_background" />
 
-        <ListView
-            android:id="@+id/companies_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ListView>
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
