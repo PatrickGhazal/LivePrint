@@ -9,9 +9,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Funcs {
+
+    final static int bufferSize = 8096;
 
     // compute height from percentage of total height
     public static int resizeHeight(double gapPerc, double windowHeight) {
@@ -58,55 +64,55 @@ public class Funcs {
         return compNames;
     }
 
-    public static String readFromFile(Context context, String fileName) {
-        FileInputStream inputStream = null;
-        String contents = "";
-        int ch;
-        try {
-            inputStream = context.openFileInput(fileName);
+    public static void setup() {
 
-            while ((ch = inputStream.read()) != -1) {
-                contents += ("" + (char)(ch));
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return contents;
     }
 
-    public static void writeToFile(Context context, String fileName, String contents) {
-        FileOutputStream outputStream = null;
+    public static String read(Context context, String fileName) throws FileNotFoundException, IOException {
+        //Reading the file back...
 
-        try {
-            outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            outputStream.write(contents.getBytes());
-            outputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        /* We have to use the openFileInput()-method
+         * the ActivityContext provides.
+         * Again for security reasons with
+         * openFileInput(...) */
 
-        }
+        FileInputStream fIn = context.openFileInput(fileName);
+        InputStreamReader isr = new InputStreamReader(fIn);
+
+        /* Prepare a char-Array that will
+         * hold the chars we read back in. */
+
+        char[] inputBuffer = new char[bufferSize];
+
+        // Fill the Buffer with data from the file
+        isr.read(inputBuffer);
+
+        // Transform the chars to a String
+        String readString = new String(inputBuffer);
+
+        isr.close();
+
+        return readString.trim();
     }
+
+    public static void write(Context context, String fileName, String toWrite) throws FileNotFoundException, IOException {
+        /* We have to use the openFileOutput()-method
+         * the ActivityContext provides, to
+         * protect your file from others and
+         * This is done for security-reasons.
+         * We chose MODE_WORLD_READABLE, because
+         *  we have nothing to hide in our file */
+        FileOutputStream fOut = context.openFileOutput(fileName, MODE_PRIVATE);
+        OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+        // Write the string to the file
+        osw.write(toWrite);
+
+        /* ensure that everything is
+         * really written out and close */
+        osw.close();
+    }
+
+
 
 }

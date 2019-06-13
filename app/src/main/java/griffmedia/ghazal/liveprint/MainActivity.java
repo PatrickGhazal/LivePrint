@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Funcs.setup();
     }
 
     @Override
@@ -53,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openTH(View v) {
         Intent intent = new Intent(this, NatTreasureHunt.class);
+        startActivity(intent);
+    }
+
+    public void openTest(View v) {
+        Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);
     }
 

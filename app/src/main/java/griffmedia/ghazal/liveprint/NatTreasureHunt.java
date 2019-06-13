@@ -12,9 +12,16 @@ import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import io.fabric.sdk.android.Fabric;
 
 public class NatTreasureHunt extends AppCompatActivity {
+
+    final String TESTSTRING = new String("Hello Android");
 
     // percentage of screen height that the gaps should be
     private static final double gapPerc1 = 2.06;
@@ -36,8 +43,10 @@ public class NatTreasureHunt extends AppCompatActivity {
     }
 
     public void openCamera(View v) {
+
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         startActivity(intent);
+
     }
 
     private void setFormatting() {
