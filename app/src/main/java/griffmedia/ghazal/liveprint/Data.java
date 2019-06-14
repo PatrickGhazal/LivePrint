@@ -23,6 +23,8 @@ public class Data {
     }
 
     public static void addComp(Company c) {
+        if (partnerComps == null)
+            partnerComps = new ArrayList<Company>();
         partnerComps.add(c);
     }
 
@@ -39,7 +41,7 @@ public class Data {
         ArrayList<String> fullData = new ArrayList<String>();
         for (Company c : partnerComps) {
             for (Link l : c.getLinks()) {
-                String linkString = c.getName() + " :: {" + l.toString() + "}";
+                String linkString = c.getName() + " :: " + l.toString();
                 fullData.add(linkString);
             }
         }
@@ -56,6 +58,7 @@ class Company {
 
     public Company(String n) {
         this.name = n;
+        this.password = "";
         links = new ArrayList<Link>();
     }
 

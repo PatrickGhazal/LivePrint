@@ -6,18 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
+import static android.content.Context.*;
 
 public class Funcs {
 
     final static int bufferSize = 8096;
+
 
     // compute height from percentage of total height
     public static int resizeHeight(double gapPerc, double windowHeight) {
@@ -37,8 +37,50 @@ public class Funcs {
         }
     }
 
-    public static void setup() {
+    public static void setup(Context context) {
 
+        MainActivity.dataInstance = Data.getInstance();
+        try {
+            String compLinkData = Funcs.read(context, "CompaniesLinks.txt");
+            loadCompLinkData(compLinkData);
+        } catch (IOException e) {
+            System.out.println("Could not load data for companies and links.");
+        }
+    }
+
+    private static void loadCompLinkData(String data) {
+        String[] links = data.split("\\|\\|");
+        for (String link : links) {
+            if (link.length() > 0) {
+                String[] parts = link.split("::");
+                String compName = parts[0].trim();
+                String[] photoVideoNames = parts[1].trim().split("//");
+                String photoName = photoVideoNames[0].trim();
+                String videoName = photoVideoNames[1].trim();
+                Company foundComp = new Company(compName);
+                Data.addComp(foundComp);
+                Link foundLink = new Link(photoName, videoName);
+                foundComp.addLink(foundLink);
+            }
+        }
+    }
+
+    public static void saveFullData(Context context) {
+        ArrayList<String> fullData = Data.dataToString();
+        boolean first = true;
+        while (fullData.size() != 0) {
+            String dataElement = fullData.remove(0);
+            try {
+                if (first) {
+                    first = false;
+                    write(context, "CompaniesLinks.txt", dataElement, false);
+                } else {
+                    write(context, "CompaniesLinks.txt", dataElement, true);
+                }
+            } catch (IOException e) {
+                System.out.println("Could not save data.");
+            }
+        }
     }
 
     public static String read(Context context, String fileName) throws IOException {
@@ -62,16 +104,24 @@ public class Funcs {
 
     }
 
-    public static void write(Context context, String fileName, String toWrite) throws IOException {
+    public static void write(Context context, String fileName, String toWrite, boolean append) throws IOException {
 
-        FileOutputStream fOut = context.openFileOutput(fileName, MODE_PRIVATE);
+        FileOutputStream fOut;
+
+        if (append) {
+            fOut = context.openFileOutput(fileName, MODE_PRIVATE | MODE_APPEND);
+        } else {
+            fOut = context.openFileOutput(fileName, MODE_PRIVATE);
+        }
+
         OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+        toWrite += "||";
 
         osw.write(toWrite);
 
         osw.close();
     }
-
 
 
 }

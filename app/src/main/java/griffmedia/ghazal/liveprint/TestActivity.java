@@ -22,13 +22,26 @@ public class TestActivity extends AppCompatActivity {
 
     public void testBehaviour(View v) {
         try {
-            Funcs.write(this, "testfn.txt", "experience");
-            String found = Funcs.read(this, "testfn.txt");
-            System.out.println(found.equals("experience"));
+            String found = Funcs.read(this, "CompaniesLinks.txt");
+            System.out.println(found);
         } catch (FileNotFoundException e) {
             System.out.println("fnf exc");
         } catch (IOException e) {
             System.out.println("io exc");
         }
+    }
+
+    public void genRandLink(View v) {
+        String randComp = "" + (10.0 * Math.random());
+        String randPName = "" + (100.0 * Math.random());
+        String randVName = "" + (100.0 * Math.random());
+        Company c = new Company(randComp);
+        Link l = new Link(randPName, randVName);
+        c.addLink(l);
+        Data.addComp(c);
+    }
+
+    public void saveData(View v) {
+        Funcs.saveFullData(this);
     }
 }

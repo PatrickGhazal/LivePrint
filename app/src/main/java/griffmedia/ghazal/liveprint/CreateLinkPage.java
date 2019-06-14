@@ -74,8 +74,8 @@ public class CreateLinkPage extends AppCompatActivity {
 
         if (!selectedImage.equals("") && !selectedVideo.equals("")) {
 
-            Link newLink = new Link(selectedImage, selectedVideo, "defaultCo");
-            LPHomePage.addLink(newLink);
+//            Link newLink = new Link(selectedImage, selectedVideo, "defaultCo");
+//            LPHomePage.addLink(newLink);
 //            Funcs.writeToFile(this, "allLinks.txt", newLink.toString());
 //            LPHomePage.setFileContext(this);
 

@@ -33,13 +33,13 @@ public class LPListPage extends AppCompatActivity {
     }
 
     private void setCompNames() {
-        ArrayList<String> compNames = Funcs.extractCompNames();
+//        ArrayList<String> compNames = Funcs.extractCompNames();
         //TextView tvCompNames = findViewById(R.id.comp_names);
         String allComps = "";
 
-        for (String company : compNames) {
-            allComps += (company + "\n");
-        }
+//        for (String company : compNames) {
+//            allComps += (company + "\n");
+//        }
 
         //tvCompNames.setText(allComps);
 

@@ -60,7 +60,7 @@ public class ControlPanel extends AppCompatActivity {
 
 //        tvExistingLinks.setText(allLinks);
 
-        tvExistingLinks.setText(Funcs.linksToString("defaultCo"));
+//        tvExistingLinks.setText(Funcs.linksToString("defaultCo"));
     }
 
     private void setGapSizes(View v1, View v2) {
