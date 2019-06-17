@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Register"
+    tools:showIn="@layout/activity_register">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lpc1b_register"/>
+
+        <EditText
+            android:id="@+id/lpc1b_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/lpc1b_hint_company"/>
+
+        <EditText
+            android:id="@+id/lpc1b_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/lpc1b_hint_password"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="registerCo"
+            android:text="@string/lpc1b_button_register"/>
+
+        <TextView
+            android:id="@+id/lpc1b_error"
+            android:textColor="#FF0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+        
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

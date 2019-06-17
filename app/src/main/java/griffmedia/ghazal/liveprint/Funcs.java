@@ -48,8 +48,11 @@ public class Funcs {
         }
     }
 
-    private static void loadCompLinkData(String data) {
-        String[] links = data.split("\\|\\|");
+    private static void loadCompLinkData(String strData) {
+
+        Data data = Data.getInstance();
+
+        String[] links = strData.split("\\|\\|");
         for (String link : links) {
             if (link.length() > 0) {
                 String[] parts = link.split("::");
@@ -58,7 +61,7 @@ public class Funcs {
                 String photoName = photoVideoNames[0].trim();
                 String videoName = photoVideoNames[1].trim();
                 Company foundComp = new Company(compName);
-                Data.addComp(foundComp);
+                data.addComp(foundComp);
                 Link foundLink = new Link(photoName, videoName);
                 foundComp.addLink(foundLink);
             }
@@ -66,7 +69,10 @@ public class Funcs {
     }
 
     public static void saveFullData(Context context) {
-        ArrayList<String> fullData = Data.dataToString();
+
+        Data data = Data.getInstance();
+
+        ArrayList<String> fullData = data.dataToString();
         boolean first = true;
         while (fullData.size() != 0) {
             String dataElement = fullData.remove(0);

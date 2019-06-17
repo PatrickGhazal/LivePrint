@@ -32,13 +32,16 @@ public class TestActivity extends AppCompatActivity {
     }
 
     public void genRandLink(View v) {
+
+        Data data = Data.getInstance();
+
         String randComp = "" + (10.0 * Math.random());
         String randPName = "" + (100.0 * Math.random());
         String randVName = "" + (100.0 * Math.random());
         Company c = new Company(randComp);
         Link l = new Link(randPName, randVName);
         c.addLink(l);
-        Data.addComp(c);
+        data.addComp(c);
     }
 
     public void saveData(View v) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Data {
 
-    private static ArrayList<Company> partnerComps;
+    private ArrayList<Company> partnerComps;
     private static Data instance;
 
     private Data() {
@@ -18,17 +18,17 @@ public class Data {
         return instance;
     }
 
-    public static ArrayList<Company> getPartnerComps() {
+    public ArrayList<Company> getPartnerComps() {
         return partnerComps;
     }
 
-    public static void addComp(Company c) {
+    public void addComp(Company c) {
         if (partnerComps == null)
             partnerComps = new ArrayList<Company>();
         partnerComps.add(c);
     }
 
-    public static boolean hasComp(Company c) {
+    public boolean hasComp(Company c) {
         for (Company existingComp : partnerComps) {
             if (existingComp.identical(c)) {
                 return true;
@@ -37,7 +37,7 @@ public class Data {
         return false;
     }
 
-    public static ArrayList<String> dataToString() {
+    public ArrayList<String> dataToString() {
         ArrayList<String> fullData = new ArrayList<String>();
         for (Company c : partnerComps) {
             for (Link l : c.getLinks()) {
