@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class Data {
 
+    public static final int bufferSize = 8096;
+    public static final String compLinksFileName = "CompaniesLinks.txt";
+
     private ArrayList<Company> partnerComps;
     private static Data instance;
 
@@ -26,11 +29,12 @@ public class Data {
         if (partnerComps == null)
             partnerComps = new ArrayList<Company>();
         partnerComps.add(c);
+
     }
 
     public boolean hasComp(Company c) {
         for (Company existingComp : partnerComps) {
-            if (existingComp.identical(c)) {
+            if (existingComp.identical(c, true)) {
                 return true;
             }
         }
@@ -40,10 +44,7 @@ public class Data {
     public ArrayList<String> dataToString() {
         ArrayList<String> fullData = new ArrayList<String>();
         for (Company c : partnerComps) {
-            for (Link l : c.getLinks()) {
-                String linkString = c.getName() + " :: " + l.toString();
-                fullData.add(linkString);
-            }
+            fullData.add(c.toString());
         }
         return fullData;
     }
@@ -82,8 +83,22 @@ class Company {
         return this.links;
     }
 
-    public boolean identical(Company c) {
-        return this.getName().equals(c.getName()) && this.getPassword().equals(c.getPassword());
+    public boolean identical(Company c, boolean checkForPW) {
+        boolean pwCheck = (checkForPW ? this.getPassword().equals(c.getPassword()) : true);
+        return this.getName().equals(c.getName()) && pwCheck;
+    }
+
+    public String toString() {
+        String returned = "";
+        if (this.getLinks().size() == 0) {
+            returned = this.getName() + " :: no_links";
+        } else {
+            returned = this.getName() + " :: ";
+            for (Link l : this.getLinks()) {
+                returned += (l.toString() + "---");
+            }
+        }
+        return returned;
     }
 
 }

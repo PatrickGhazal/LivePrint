@@ -16,9 +16,6 @@ import static android.content.Context.*;
 
 public class Funcs {
 
-    final static int bufferSize = 8096;
-
-
     // compute height from percentage of total height
     public static int resizeHeight(double gapPerc, double windowHeight) {
         return (int) Math.round(gapPerc * windowHeight / 100.0);
@@ -41,7 +38,7 @@ public class Funcs {
 
         MainActivity.dataInstance = Data.getInstance();
         try {
-            String compLinkData = Funcs.read(context, "CompaniesLinks.txt");
+            String compLinkData = Funcs.read(context, Data.compLinksFileName);
             loadCompLinkData(compLinkData);
         } catch (IOException e) {
             System.out.println("Could not load data for companies and links.");
@@ -52,18 +49,23 @@ public class Funcs {
 
         Data data = Data.getInstance();
 
-        String[] links = strData.split("\\|\\|");
-        for (String link : links) {
-            if (link.length() > 0) {
-                String[] parts = link.split("::");
-                String compName = parts[0].trim();
-                String[] photoVideoNames = parts[1].trim().split("//");
-                String photoName = photoVideoNames[0].trim();
-                String videoName = photoVideoNames[1].trim();
+        String[] compData = strData.split("\\|\\|");
+        for (String cData : compData) {
+            if (cData.length() > 0) {
+                String[] parts = cData.split("::");
+                String compName = parts[0].trim(), photoName = "", videoName = "";
                 Company foundComp = new Company(compName);
                 data.addComp(foundComp);
-                Link foundLink = new Link(photoName, videoName);
-                foundComp.addLink(foundLink);
+                String[] links = parts[1].split("---");
+                for (String link : links) {
+                    String[] photoVideoNames = link.split("//");
+                    if (photoVideoNames.length > 1) {
+                        photoName = photoVideoNames[0].trim();
+                        videoName = photoVideoNames[1].trim();
+                        Link foundLink = new Link(photoName, videoName);
+                        foundComp.addLink(foundLink);
+                    }
+                }
             }
         }
     }
@@ -79,9 +81,9 @@ public class Funcs {
             try {
                 if (first) {
                     first = false;
-                    write(context, "CompaniesLinks.txt", dataElement, false);
+                    write(context, Data.compLinksFileName, dataElement, false);
                 } else {
-                    write(context, "CompaniesLinks.txt", dataElement, true);
+                    write(context, Data.compLinksFileName, dataElement, true);
                 }
             } catch (IOException e) {
                 System.out.println("Could not save data.");
@@ -94,7 +96,7 @@ public class Funcs {
         FileInputStream fIn = context.openFileInput(fileName);
         InputStreamReader isr = new InputStreamReader(fIn);
 
-        char[] inputBuffer = new char[bufferSize];
+        char[] inputBuffer = new char[Data.bufferSize];
 
         String fullFound = "";
 

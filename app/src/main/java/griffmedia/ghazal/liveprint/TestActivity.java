@@ -22,7 +22,8 @@ public class TestActivity extends AppCompatActivity {
 
     public void testBehaviour(View v) {
         try {
-            String found = Funcs.read(this, "CompaniesLinks.txt");
+//            Funcs.write(this, Data.compLinksFileName, "", false);
+            String found = Funcs.read(this, Data.compLinksFileName);
             System.out.println(found);
         } catch (FileNotFoundException e) {
             System.out.println("fnf exc");
