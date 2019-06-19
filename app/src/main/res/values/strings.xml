@@ -7,6 +7,8 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_control_panel">ControlPanel</string>
     <string name="title_activity_create_link_page">CreateLinkPage</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_register">Register</string>
     <string name="action_settings">Settings</string>
 
     <string name="th_button_open_camera">Game on !</string>
@@ -19,6 +21,7 @@
     <string name="th_intro6_tip2"><i>No need to click !</i></string>
     <string name="button_open_lp">Open LP</string>
     <string name="button_open_th">Open TH</string>
+    <string name="button_open_test">Open Test</string>
     <string name="lp0_intro1_welcome">Welcome to the LivePrint App !</string>
     <string name="lp0_intro2_user">To start using LivePrint, click the button below !</string>
     <string name="lp0_button_start_lp">Start LP !</string>
@@ -30,7 +33,13 @@
     <string name="lpu1a_button_select">Select</string>
     <string name="lpc1_enter_user">Enter your Username:</string>
     <string name="lpc1_enter_pass">Enter your Password:</string>
-    <string name="lpc1_login">Login</string>
+    <string name="lpc1_button_login">Login</string>
+    <string name="lpc1_button_register">Register</string>lpc1_button_register
+    <string name="lpc1_no_account_register">Don\'t have an account? Register below:</string>
+    <string name="lpc1b_register">Enter the name of the company and your chosen password.</string>
+    <string name="lpc1b_hint_company">Company Name</string>
+    <string name="lpc1b_hint_password">Password</string>
+    <string name="lpc1b_button_register">Register</string>
     <string name="lpc2_intro_create">Create a new Link by pressing below.</string>
     <string name="lpc2_intro_modify">Alternatively, you can view/modify your existing links below.</string>
     <string name="lpc2_button_create_link">Create a Link</string>
@@ -41,5 +50,6 @@
     <string name="lpc3_button_video">Upload Video</string>
     <string name="lpc3_selected_video"><i>Selected video:</i></string>
     <string name="lpc3_button_create">Create Link</string>
+    <string name="test_behaviour">Test Behaviour</string>
 
 </resources>

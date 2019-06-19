@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".LPListPage"
-    tools:showIn="@layout/activity_lp_list_page">
-
+    tools:context=".Register"
+    tools:showIn="@layout/activity_register">
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,29 +16,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/lpu1_choose_company" />
+            android:text="@string/lpc1b_register"/>
 
-        <TextView
+        <EditText
+            android:id="@+id/lpc1b_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/lpu1_choose_company2" />
-        
-        <Spinner
-            android:id="@+id/comp_spinner"
+            android:hint="@string/lpc1b_hint_company"/>
+
+        <EditText
+            android:id="@+id/lpc1b_password"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/lpc1b_hint_password"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/cardview_dark_background"
-            android:onClick="openCamera"
-            android:text="@string/lpu1_button_open_camera"
-            android:textColor="@color/cardview_light_background" />
+            android:layout_gravity="right"
+            android:onClick="registerCo"
+            android:text="@string/lpc1b_button_register"/>
 
+        <TextView
+            android:id="@+id/lpc1b_error"
+            android:textColor="#FF0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
+        
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

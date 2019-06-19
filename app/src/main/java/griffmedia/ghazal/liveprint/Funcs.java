@@ -6,10 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+
+import static android.content.Context.*;
 
 public class Funcs {
 
@@ -31,82 +34,101 @@ public class Funcs {
         }
     }
 
-    public static String linksToString(String company) {
-        ArrayList<Link> links = LPHomePage.getLinks();
+    public static void setup(Context context) {
 
-        String returned = "";
-
-        for (Link link : links) {
-            if (link.getCompany().equals(company)) {
-                String newLink = link.getPhotoName() + "/" + link.getVideoName() + "\n";
-                returned += newLink;
-            }
-        }
-
-        return returned;
-    }
-
-    public static ArrayList<String> extractCompNames() {
-        ArrayList<Link> allLinks = LPHomePage.getLinks();
-        ArrayList<String> compNames = new ArrayList<String>();
-
-        for (Link link : allLinks) {
-            String compName = link.getCompany();
-            compNames.add(compName);
-        }
-
-        return compNames;
-    }
-
-    public static String readFromFile(Context context, String fileName) {
-        FileInputStream inputStream = null;
-        String contents = "";
-        int ch;
         try {
-            inputStream = context.openFileInput(fileName);
-
-            while ((ch = inputStream.read()) != -1) {
-                contents += ("" + (char)(ch));
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            String compLinkData = Funcs.read(context, Data.compLinksFileName);
+            loadCompLinkData(compLinkData);
         } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            System.out.println("Could not load data for companies and links.");
+        }
+    }
+
+    private static void loadCompLinkData(String strData) {
+
+        Data data = Data.getInstance();
+
+        String[] compData = strData.split("\\|\\|");
+        for (String cData : compData) {
+            if (cData.length() > 0) {
+                String[] parts = cData.split("::");
+                String compName = parts[0].trim(), photoName = "", videoName = "";
+                Company foundComp = new Company(compName);
+                data.addComp(foundComp);
+                String[] links = parts[1].split("---");
+                for (String link : links) {
+                    String[] photoVideoNames = link.split("//");
+                    if (photoVideoNames.length > 1) {
+                        photoName = photoVideoNames[0].trim();
+                        videoName = photoVideoNames[1].trim();
+                        Link foundLink = new Link(photoName, videoName);
+                        foundComp.addLink(foundLink);
+                    }
                 }
             }
         }
-
-        return contents;
     }
 
-    public static void writeToFile(Context context, String fileName, String contents) {
-        FileOutputStream outputStream = null;
+    public static void saveFullData(Context context) {
 
-        try {
-            outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            outputStream.write(contents.getBytes());
-            outputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+        Data data = Data.getInstance();
+
+        ArrayList<String> fullData = data.dataToString();
+        boolean first = true;
+        while (fullData.size() != 0) {
+            String dataElement = fullData.remove(0);
+            try {
+                if (first) {
+                    first = false;
+                    write(context, Data.compLinksFileName, dataElement, false);
+                } else {
+                    write(context, Data.compLinksFileName, dataElement, true);
                 }
+            } catch (IOException e) {
+                System.out.println("Could not save data.");
             }
-
         }
     }
+
+    public static String read(Context context, String fileName) throws IOException {
+
+        FileInputStream fIn = context.openFileInput(fileName);
+        InputStreamReader isr = new InputStreamReader(fIn);
+
+        char[] inputBuffer = new char[Data.bufferSize];
+
+        String fullFound = "";
+
+        while (fIn.available() != 0) {
+            isr.read(inputBuffer);
+            String found = new String(inputBuffer);
+            fullFound += found;
+        }
+
+        isr.close();
+
+        return fullFound.trim();
+
+    }
+
+    public static void write(Context context, String fileName, String toWrite, boolean append) throws IOException {
+
+        FileOutputStream fOut;
+
+        if (append) {
+            fOut = context.openFileOutput(fileName, MODE_PRIVATE | MODE_APPEND);
+        } else {
+            fOut = context.openFileOutput(fileName, MODE_PRIVATE);
+        }
+
+        OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+        toWrite += "||";
+
+        osw.write(toWrite);
+
+        osw.close();
+    }
+
 
 }

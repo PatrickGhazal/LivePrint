@@ -74,11 +74,6 @@ public class CreateLinkPage extends AppCompatActivity {
 
         if (!selectedImage.equals("") && !selectedVideo.equals("")) {
 
-            Link newLink = new Link(selectedImage, selectedVideo, "defaultCo");
-            LPHomePage.addLink(newLink);
-//            Funcs.writeToFile(this, "allLinks.txt", newLink.toString());
-//            LPHomePage.setFileContext(this);
-
             Intent intent = new Intent(this, ControlPanel.class);
             startActivity(intent);
         } else {
@@ -98,7 +93,7 @@ public class CreateLinkPage extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour("#EEEEEE", v1, v2, v3, v4, v5);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4, v5);
         }
     }
 

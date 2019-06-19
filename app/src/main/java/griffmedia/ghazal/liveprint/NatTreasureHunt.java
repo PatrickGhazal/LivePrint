@@ -12,6 +12,11 @@ import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import io.fabric.sdk.android.Fabric;
 
 public class NatTreasureHunt extends AppCompatActivity {
@@ -36,8 +41,10 @@ public class NatTreasureHunt extends AppCompatActivity {
     }
 
     public void openCamera(View v) {
+
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         startActivity(intent);
+
     }
 
     private void setFormatting() {
@@ -50,7 +57,7 @@ public class NatTreasureHunt extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour("#EEEEEE", v1, v2, v3, v4);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4);
         }
     }
 

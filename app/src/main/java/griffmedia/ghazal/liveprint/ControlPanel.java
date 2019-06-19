@@ -35,8 +35,6 @@ public class ControlPanel extends AppCompatActivity {
 
     private void setFormatting() {
 
-        resetExistingLinks();
-
         View v1 = findViewById(R.id.lpc2_empty1);
         View v2 = findViewById(R.id.lpc2_empty2);
 
@@ -44,23 +42,8 @@ public class ControlPanel extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour("#EEEEEE", v1, v2);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2);
         }
-    }
-
-    private void resetExistingLinks() {
-
-//        String allLinks = "";
-//
-//        if (LPHomePage.getFileContext() != null) {
-//            allLinks = Funcs.readFromFile(LPHomePage.getFileContext(), "allLinks.txt");
-//        }
-
-        TextView tvExistingLinks = findViewById(R.id.existing_links);
-
-//        tvExistingLinks.setText(allLinks);
-
-        tvExistingLinks.setText(Funcs.linksToString("defaultCo"));
     }
 
     private void setGapSizes(View v1, View v2) {

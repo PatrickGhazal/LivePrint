@@ -1,6 +1,5 @@
 package griffmedia.ghazal.liveprint;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+
 import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class LPHomePage extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour("#EEEEEE", v1, v2, v3);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3);
         }
     }
 
