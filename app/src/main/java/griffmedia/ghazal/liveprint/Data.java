@@ -6,6 +6,7 @@ public class Data {
 
     public static final int bufferSize = 8096;
     public static final String compLinksFileName = "CompaniesLinks.txt";
+    public static final String bgColourBeforeM = "#EEEEEE";
 
     private ArrayList<Company> partnerComps;
     private static Data instance;
@@ -47,6 +48,15 @@ public class Data {
             fullData.add(c.toString());
         }
         return fullData;
+    }
+
+    public Company getCompByName(String name) {
+        for (Company c : this.getPartnerComps()) {
+            if (c.getName().equals(name)) {
+                return c;
+            }
+        }
+        return null;
     }
 
 }

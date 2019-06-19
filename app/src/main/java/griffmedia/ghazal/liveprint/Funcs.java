@@ -36,7 +36,6 @@ public class Funcs {
 
     public static void setup(Context context) {
 
-        MainActivity.dataInstance = Data.getInstance();
         try {
             String compLinkData = Funcs.read(context, Data.compLinksFileName);
             loadCompLinkData(compLinkData);

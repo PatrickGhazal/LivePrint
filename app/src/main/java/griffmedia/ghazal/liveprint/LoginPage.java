@@ -24,7 +24,7 @@ public class LoginPage extends AppCompatActivity {
 
     //TODO: fix fillCredentials method, make path relative, remove hardcodeCreds
     private static final String fileSep = System.getProperty("file.separator");
-//    private static final String credentialsPath = fileSep + "src" + fileSep + "main" + fileSep + "creds.txt";
+    //    private static final String credentialsPath = fileSep + "src" + fileSep + "main" + fileSep + "creds.txt";
     //private static final String credentialsPath = "C:\\Users\\Admin\\android-workspace\\LivePrint\\app\\src\\main\\creds.txt";
     private static final String credentialsPath = "src\\main\\creds.txt";
 
@@ -145,7 +145,7 @@ public class LoginPage extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour("#EEEEEE", v1, v2, v3, v4);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4);
         }
     }
 

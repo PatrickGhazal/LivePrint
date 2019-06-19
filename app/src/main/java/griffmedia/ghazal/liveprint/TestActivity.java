@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class TestActivity extends AppCompatActivity {
 
-    private static final String testString = "Hello World !";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +34,9 @@ public class TestActivity extends AppCompatActivity {
 
         Data data = Data.getInstance();
 
-        String randComp = "" + (10.0 * Math.random());
-        String randPName = "" + (100.0 * Math.random());
-        String randVName = "" + (100.0 * Math.random());
+        String randComp = "RandComp" + (int) Math.floor(100.0 * Math.random());
+        String randPName = "RandPN" + (int) Math.floor(100.0 * Math.random());
+        String randVName = "RandVN" + (int) Math.floor(100.0 * Math.random());
         Company c = new Company(randComp);
         Link l = new Link(randPName, randVName);
         c.addLink(l);

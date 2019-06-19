@@ -21,8 +21,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class NatTreasureHunt extends AppCompatActivity {
 
-    final String TESTSTRING = new String("Hello Android");
-
     // percentage of screen height that the gaps should be
     private static final double gapPerc1 = 2.06;
     private static final double gapPerc2 = 3.62;
@@ -59,7 +57,7 @@ public class NatTreasureHunt extends AppCompatActivity {
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour("#EEEEEE", v1, v2, v3, v4);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4);
         }
     }
 
