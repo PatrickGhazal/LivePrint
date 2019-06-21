@@ -7,6 +7,7 @@ import android.view.View;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -20,9 +21,9 @@ public class TestActivity extends AppCompatActivity {
 
     public void testBehaviour(View v) {
         try {
-//            Funcs.write(this, Data.compLinksFileName, "", false);
             String found = Funcs.read(this, Data.compLinksFileName);
             System.out.println(found);
+            dispCreds();
         } catch (FileNotFoundException e) {
             System.out.println("fnf exc");
         } catch (IOException e) {
@@ -30,20 +31,46 @@ public class TestActivity extends AppCompatActivity {
         }
     }
 
+    private void dispCreds() {
+        Data data = Data.getInstance();
+        ArrayList<Company> comps = data.getPartnerComps();
+        for (Company comp : comps) {
+            System.out.println(comp.getName() + " // " + comp.getPassword());
+        }
+    }
+
     public void genRandLink(View v) {
 
         Data data = Data.getInstance();
 
-        String randComp = "RandComp" + (int) Math.floor(100.0 * Math.random());
-        String randPName = "RandPN" + (int) Math.floor(100.0 * Math.random());
-        String randVName = "RandVN" + (int) Math.floor(100.0 * Math.random());
+        String randComp = "RandComp" + randNum();
+        String randPName = "RandPN" + randNum();
+        String randVName = "RandVN" + randNum();
+        String randPW = "RandPW" + randNum();
         Company c = new Company(randComp);
+        c.setPassword(randPW);
         Link l = new Link(randPName, randVName);
         c.addLink(l);
         data.addComp(c);
     }
 
+    private int randNum() {
+        return (int) Math.floor(100.0 * Math.random());
+    }
+
     public void saveData(View v) {
         Funcs.saveFullData(this);
+    }
+
+    public void eraseData(View v) {
+        try {
+            Funcs.write(this, Data.compLinksFileName, "", false);
+            Data data = Data.getInstance();
+            data.eraseAllData();
+        } catch (FileNotFoundException e) {
+            System.out.println("fnf exc");
+        } catch (IOException e) {
+            System.out.println("io exc");
+        }
     }
 }

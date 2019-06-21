@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lpc1_enter_user"/>
+            android:text="@string/lpc1_enter_user" />
 
         <EditText
             android:id="@+id/lp_login_user"
@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lpc1_enter_pass"/>
+            android:text="@string/lpc1_enter_pass" />
 
         <EditText
             android:id="@+id/lp_login_pass"
@@ -74,14 +74,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lpc1_no_account_register"/>
+            android:text="@string/lpc1_no_account_register" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="register"
-            android:text="@string/lpc1_button_register"/>
+            android:text="@string/lpc1_button_register" />
+
+        <TextView
+            android:id="@+id/login_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000" />
 
     </LinearLayout>
 

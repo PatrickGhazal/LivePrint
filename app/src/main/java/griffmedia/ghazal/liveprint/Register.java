@@ -8,11 +8,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
+
 public class Register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_register);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,6 +42,7 @@ public class Register extends AppCompatActivity {
             Company newCo = new Company(compName);
             newCo.setPassword(passwordET.getText().toString());
             data.addComp(newCo);
+            Funcs.saveFullData(this);
 
             Intent loginIntent = new Intent(this, LoginPage.class);
             startActivity(loginIntent);

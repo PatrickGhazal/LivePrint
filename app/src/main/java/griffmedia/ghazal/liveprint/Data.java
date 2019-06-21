@@ -1,5 +1,7 @@
 package griffmedia.ghazal.liveprint;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 public class Data {
@@ -59,6 +61,19 @@ public class Data {
         return null;
     }
 
+    public void eraseAllData() {
+        for (Company comp : this.getPartnerComps()) {
+            comp.removeLinks();
+        }
+        removeComps();
+    }
+
+    private void removeComps() {
+        while (this.getPartnerComps().size() > 0) {
+            this.getPartnerComps().remove(0);
+        }
+    }
+
 }
 
 class Company {
@@ -101,14 +116,20 @@ class Company {
     public String toString() {
         String returned = "";
         if (this.getLinks().size() == 0) {
-            returned = this.getName() + " :: no_links";
+            returned = this.getName() + " :: " + this.getPassword() + " :: no_links";
         } else {
-            returned = this.getName() + " :: ";
+            returned = this.getName() + " :: " + this.getPassword() + " :: ";
             for (Link l : this.getLinks()) {
                 returned += (l.toString() + "---");
             }
         }
         return returned;
+    }
+
+    public void removeLinks() {
+        while (this.getLinks().size() > 0) {
+            this.getLinks().remove(0);
+        }
     }
 
 }

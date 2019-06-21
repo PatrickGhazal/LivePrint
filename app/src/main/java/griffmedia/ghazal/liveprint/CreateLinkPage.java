@@ -17,7 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
@@ -31,10 +34,12 @@ import io.fabric.sdk.android.Fabric;
 
 public class CreateLinkPage extends AppCompatActivity {
 
-    private static final double gapPerc1 = 1.31;
-    private static final double gapPerc24 = 0.88;
-    private static final double gapPerc3 = 2.62;
-    private static final double gapPerc5 = 4.38;
+    private static final double gapPerc16 = 1.31 / 1.25;
+    private static final double gapPerc24 = 0.88 / 1.25;
+    private static final double gapPerc3 = 2.62 / 1.25;
+    private static final double gapPerc5 = 4.38 / 1.5;
+
+    private static boolean fromArtificialLogin = false;
 
 //    private static final int GET_FROM_GALLERY = 77;
 //    private Bitmap mImageBitmap;
@@ -74,12 +79,56 @@ public class CreateLinkPage extends AppCompatActivity {
 
         if (!selectedImage.equals("") && !selectedVideo.equals("")) {
 
-            Intent intent = new Intent(this, ControlPanel.class);
-            startActivity(intent);
+            Link newLink = new Link(selectedImage, selectedVideo);
+
+            if (LoginPage.currLoggedInComp != null) {
+                LoginPage.currLoggedInComp.addLink(newLink);
+                if (fromArtificialLogin) {
+                    LoginPage.currLoggedInComp = null;
+                    fromArtificialLogin = false;
+                }
+                Funcs.saveFullData(this);
+                Intent intent = new Intent(this, ControlPanel.class);
+                startActivity(intent);
+            } else {
+                promptCompany();
+            }
         } else {
             TextView tvSuccess = findViewById(R.id.create_success);
             tvSuccess.setText("Failure..");
         }
+    }
+
+    public void createLinkWithCompany(View v) {
+        EditText compET = (EditText) findViewById(R.id.lpc3_unknown_comp_et);
+        EditText compPassET = (EditText) findViewById(R.id.lpc3_unknown_comp_pass_et);
+        String compName = compET.getText().toString();
+        String compPass = compPassET.getText().toString();
+
+        Data data = Data.getInstance();
+        Company foundComp = data.getCompByName(compName);
+        if (foundComp != null && foundComp.getPassword().equals(compPass)) {
+            LoginPage.currLoggedInComp = foundComp;
+            fromArtificialLogin = true;
+            createLink(v);
+        } else {
+            TextView tvSuccess = findViewById(R.id.create_success);
+            tvSuccess.setText("Failure..");
+        }
+    }
+
+    private void promptCompany() {
+        TextView compTV = (TextView) findViewById(R.id.lpc3_unknown_comp_tv);
+        LinearLayout compLayout = (LinearLayout) findViewById(R.id.lpc3_unknown_comp_credentials);
+        EditText compET = (EditText) findViewById(R.id.lpc3_unknown_comp_et);
+        EditText compPassET = (EditText) findViewById(R.id.lpc3_unknown_comp_pass_et);
+        Button compButton = (Button) findViewById(R.id.lpc3_unknown_comp_button);
+
+        compTV.setVisibility(View.VISIBLE);
+        compLayout.setVisibility(View.VISIBLE);
+        compET.setVisibility(View.VISIBLE);
+        compPassET.setVisibility(View.VISIBLE);
+        compButton.setVisibility(View.VISIBLE);
     }
 
     private void setFormatting() {
@@ -88,16 +137,17 @@ public class CreateLinkPage extends AppCompatActivity {
         View v3 = findViewById(R.id.lpc3_empty3);
         View v4 = findViewById(R.id.lpc3_empty4);
         View v5 = findViewById(R.id.lpc3_empty5);
+        View v6 = findViewById(R.id.lpc3_empty6);
 
-        setGapSizes(v1, v2, v3, v4, v5);
+        setGapSizes(v1, v2, v3, v4, v5, v6);
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4, v5);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4, v5, v6);
         }
     }
 
-    private void setGapSizes(View v1, View v2, View v3, View v4, View v5) {
+    private void setGapSizes(View v1, View v2, View v3, View v4, View v5, View v6) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         double fullWindowHeight = displayMetrics.heightPixels + 0.0;
@@ -107,11 +157,13 @@ public class CreateLinkPage extends AppCompatActivity {
         if (fullWindowHeight < 1000)
             density /= 1.5;
 
-        Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc1, fullWindowHeight), density);
+        Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc16, fullWindowHeight), density);
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc24, fullWindowHeight), density);
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc3, fullWindowHeight), density);
         Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc24, fullWindowHeight), density);
         Funcs.setGapHeight(v5, Funcs.resizeHeight(gapPerc5, fullWindowHeight), density);
+        Funcs.setGapHeight(v6, Funcs.resizeHeight(gapPerc16, fullWindowHeight), density);
+
     }
 
     /*

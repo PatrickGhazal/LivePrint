@@ -17,14 +17,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/lpc2_intro_create"/>
+            android:text="@string/lpc2_intro_create" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="openCreateLink"
             android:layout_gravity="center"
-            android:text="@string/lpc2_button_create_link"/>
+            android:onClick="openCreateLink"
+            android:text="@string/lpc2_button_create_link" />
 
         <View
             android:id="@+id/lpc2_empty1"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/lpc2_intro_modify"/>
+            android:text="@string/lpc2_intro_modify" />
 
         <View
             android:id="@+id/lpc2_empty2"
@@ -48,7 +48,7 @@
             android:id="@+id/existing_links"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text="" />
 
     </LinearLayout>
 

@@ -52,10 +52,11 @@ public class Funcs {
         for (String cData : compData) {
             if (cData.length() > 0) {
                 String[] parts = cData.split("::");
-                String compName = parts[0].trim(), photoName = "", videoName = "";
+                String compName = parts[0].trim(), compPass = parts[1].trim(), photoName = "", videoName = "";
                 Company foundComp = new Company(compName);
+                foundComp.setPassword(compPass);
                 data.addComp(foundComp);
-                String[] links = parts[1].split("---");
+                String[] links = parts[2].split("---");
                 for (String link : links) {
                     String[] photoVideoNames = link.split("//");
                     if (photoVideoNames.length > 1) {

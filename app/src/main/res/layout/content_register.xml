@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Register"
     tools:showIn="@layout/activity_register">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,35 +16,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lpc1b_register"/>
+            android:text="@string/lpc1b_register" />
 
         <EditText
             android:id="@+id/lpc1b_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/lpc1b_hint_company"/>
+            android:hint="@string/lpc1b_hint_company" />
 
         <EditText
             android:id="@+id/lpc1b_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/lpc1b_hint_password"/>
+            android:hint="@string/lpc1b_hint_password" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="registerCo"
-            android:text="@string/lpc1b_button_register"/>
+            android:text="@string/lpc1b_button_register" />
 
         <TextView
             android:id="@+id/lpc1b_error"
-            android:textColor="#FF0000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""/>
+            android:text=""
+            android:textColor="#FF0000" />
 
-        
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

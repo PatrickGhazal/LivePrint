@@ -10,25 +10,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="testBehaviour"
-            android:text="@string/test_behaviour" />
+            android:text="testBehaviour" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="genRandLink"
-            android:text="genRandLink"/>
+            android:text="genRandLink" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="saveData"
-            android:text="saveData"/>
+            android:text="saveData" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="eraseData"
+            android:text="eraseData"/>
 
 
     </LinearLayout>

@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 
@@ -22,15 +23,11 @@ import io.fabric.sdk.android.Fabric;
 
 public class LoginPage extends AppCompatActivity {
 
-    //TODO: fix fillCredentials method, make path relative, remove hardcodeCreds
-    private static final String fileSep = System.getProperty("file.separator");
-    //    private static final String credentialsPath = fileSep + "src" + fileSep + "main" + fileSep + "creds.txt";
-    //private static final String credentialsPath = "C:\\Users\\Admin\\android-workspace\\LivePrint\\app\\src\\main\\creds.txt";
-    private static final String credentialsPath = "src\\main\\creds.txt";
+    public static Company currLoggedInComp = null;
 
     private static final double gapPerc = 1.75;
 
-    private static List<String> credentials;
+    private static ArrayList<String> credentials;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,71 +39,21 @@ public class LoginPage extends AppCompatActivity {
 
         setFormatting();
 
-        //fillCredentials();
-        //hardcodeCreds();
+        loadCredentials();
     }
 
-    private void hardcodeCreds() {
+    private void loadCredentials() {
+        Data data = Data.getInstance();
+
         credentials = new ArrayList<String>();
 
-        credentials.add("u1-hello");
-        credentials.add("u2-mypass");
-        credentials.add("u3-paq");
-
-    }
-
-//    private void fillCredentials() {
-//
-//        credentials = new ArrayList<String>();
-//
-//        try {
-//            FileReader fr = new FileReader(credentialsPath);
-//            BufferedReader br = new BufferedReader(fr);
-//
-//            String line = br.readLine();
-//            while (line != null) {
-//                System.out.println("------------------------------");
-//                System.out.println(line);
-//                System.out.println("------------------------------");
-//                credentials.add(line);
-//                line = br.readLine();
-//            }
-//
-//        } catch (FileNotFoundException e) {
-//            System.out.println("file not found");
-//
-//        } catch (IOException e) {
-//            System.out.println("io exception");
-//        }
-//
-//        View empty = findViewById(R.id.empty2);
-//        empty.setBackgroundColor(Color.parseColor("#FF0000"));
-//
-//    }
-
-    private void fillCredentials() {
-
-        try {
-            File file = new File(credentialsPath);
-            System.out.println("----------------------" + file.createNewFile());
-            Scanner sc = new Scanner(file);
-
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-                System.out.println("--------------" + line + "----------");
-                credentials.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("file was not found");
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (Company comp : data.getPartnerComps()) {
+            credentials.add(comp.getName() + "---" + comp.getPassword());
         }
-
-
     }
 
     public boolean validLogin(String user, String pass) {
-        String cred = user + "-" + pass;
+        String cred = user + "---" + pass;
         return credentials.contains(cred);
     }
 
@@ -114,14 +61,21 @@ public class LoginPage extends AppCompatActivity {
         EditText etUser = (EditText) findViewById(R.id.lp_login_user);
         EditText etPass = (EditText) findViewById(R.id.lp_login_pass);
 
-        String givenUser = etUser.getText().toString();
-        String givenPass = etPass.getText().toString();
+        String givenUser = etUser.getText().toString().trim();
+        String givenPass = etPass.getText().toString().trim();
 
         boolean valid = validLogin(givenUser, givenPass);
 
         if (valid) {
+
+            Data data = Data.getInstance();
+
+            currLoggedInComp = data.getCompByName(givenUser);
             Intent intent = new Intent(this, ControlPanel.class);
             startActivity(intent);
+        } else {
+            TextView tvError = (TextView) findViewById(R.id.login_error);
+            tvError.setText("Credentials unrecognized. Please try again.");
         }
     }
 
@@ -163,7 +117,6 @@ public class LoginPage extends AppCompatActivity {
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
-
     }
 
 }
