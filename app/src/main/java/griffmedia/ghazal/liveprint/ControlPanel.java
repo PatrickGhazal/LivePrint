@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
@@ -38,18 +39,19 @@ public class ControlPanel extends AppCompatActivity {
 
         View v1 = findViewById(R.id.lpc2_empty1);
         View v2 = findViewById(R.id.lpc2_empty2);
+        View v3 = findViewById(R.id.lpc2_empty3);
 
-        setGapSizes(v1, v2);
+        setGapSizes(v1, v2, v3);
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3);
         }
 
         dispExistingLinks();
     }
 
-    private void setGapSizes(View v1, View v2) {
+    private void setGapSizes(View v1, View v2, View v3) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         double fullWindowHeight = displayMetrics.heightPixels + 0.0;
@@ -61,7 +63,7 @@ public class ControlPanel extends AppCompatActivity {
 
         Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
-
+        Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
     }
 
     private void dispExistingLinks() {
@@ -75,8 +77,10 @@ public class ControlPanel extends AppCompatActivity {
             if (comp.getLinks().size() == 0) {
                 linksDisp += "No existing links.";
             }
+            int counter = 1;
             for (Link link : comp.getLinks()) {
-                linksDisp += (link.toString() + "\n");
+                linksDisp += ("" + counter + ") " + link.toString() + "\n");
+                counter++;
             }
         } else {
             linksDisp = "No company logged in.";
@@ -84,4 +88,29 @@ public class ControlPanel extends AppCompatActivity {
         linksTV.setText(linksDisp);
     }
 
+    public void updateLink(View v) {
+        EditText linkNumET = (EditText) findViewById(R.id.lpc2_update_link_value);
+        String linkNumStr = linkNumET.getText().toString();
+        int linkNum = 0;
+        try {
+            linkNum = Integer.parseInt(linkNumStr);
+        } catch (NumberFormatException e) {
+            TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
+            errorTV.setText("Link value invalid.");
+        }
+        Company currComp = LoginPage.currLoggedInComp;
+        if (currComp != null) {
+            try {
+                Link link = currComp.getLinks().get(linkNum - 1); // -1 because they're listed 1, 2, 3 not 0, 1, 2
+                UpdateLink.currComp = currComp;
+                UpdateLink.currLink = link;
+                Intent intent = new Intent(this, UpdateLink.class);
+                startActivity(intent);
+            } catch (IndexOutOfBoundsException e) {
+                TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
+                errorTV.setText("Link value invalid.");
+            }
+
+        }
+    }
 }

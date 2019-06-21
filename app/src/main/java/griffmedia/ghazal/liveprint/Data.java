@@ -132,6 +132,14 @@ class Company {
         }
     }
 
+    public void removeLink(Link toRemove) {
+        for (Link compLink : this.getLinks()) {
+            if (compLink.identical(toRemove)) {
+                this.getLinks().remove(compLink);
+            }
+        }
+    }
+
 }
 
 class Link {
@@ -154,6 +162,18 @@ class Link {
 
     public String toString() {
         return this.getPhotoName() + "//" + this.getVideoName();
+    }
+
+    public boolean identical(Link link) {
+        return this.getVideoName().equals(link.getVideoName()) && this.getPhotoName().equals(link.getPhotoName());
+    }
+
+    public void setPhotoName(String newPhotoName) {
+        this.photoName = newPhotoName;
+    }
+
+    public void setVideoName(String newVideoName) {
+        this.videoName = newVideoName;
     }
 
 }
