@@ -1,6 +1,7 @@
 package griffmedia.ghazal.liveprint;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +45,8 @@ public class ControlPanel extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             Funcs.setBGColour(Data.bgColourBeforeM, v1, v2);
         }
+
+        dispExistingLinks();
     }
 
     private void setGapSizes(View v1, View v2) {
@@ -59,6 +62,26 @@ public class ControlPanel extends AppCompatActivity {
         Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
 
+    }
+
+    private void dispExistingLinks() {
+        TextView linksTV = (TextView) findViewById(R.id.lpc2_existing_links);
+        TextView linksTitleTV = (TextView) findViewById(R.id.lpc2_existing_links_title);
+        linksTitleTV.setTypeface(null, Typeface.BOLD);
+        String linksDisp = "";
+        Company comp = LoginPage.currLoggedInComp;
+        if (comp != null) {
+            linksTitleTV.setText("Links of " + comp.getName() + ":");
+            if (comp.getLinks().size() == 0) {
+                linksDisp += "No existing links.";
+            }
+            for (Link link : comp.getLinks()) {
+                linksDisp += (link.toString() + "\n");
+            }
+        } else {
+            linksDisp = "No company logged in.";
+        }
+        linksTV.setText(linksDisp);
     }
 
 }

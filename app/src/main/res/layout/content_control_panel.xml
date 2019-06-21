@@ -45,9 +45,17 @@
             android:background="#FAFAFA" />
 
         <TextView
-            android:id="@+id/existing_links"
+            android:id="@+id/lpc2_existing_links_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/lpc2_existing_links"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="" />
 
     </LinearLayout>

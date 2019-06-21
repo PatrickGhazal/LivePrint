@@ -23,20 +23,12 @@ public class TestActivity extends AppCompatActivity {
         try {
             String found = Funcs.read(this, Data.compLinksFileName);
             System.out.println(found);
-            dispCreds();
         } catch (FileNotFoundException e) {
             System.out.println("fnf exc");
         } catch (IOException e) {
             System.out.println("io exc");
         }
-    }
 
-    private void dispCreds() {
-        Data data = Data.getInstance();
-        ArrayList<Company> comps = data.getPartnerComps();
-        for (Company comp : comps) {
-            System.out.println(comp.getName() + " // " + comp.getPassword());
-        }
     }
 
     public void genRandLink(View v) {
