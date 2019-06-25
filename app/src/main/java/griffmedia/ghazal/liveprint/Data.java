@@ -139,7 +139,9 @@ class Company {
                 found = compLink;
             }
         }
-        this.getLinks().remove(found);
+        if (found != null) {
+            this.getLinks().remove(found);
+        }
     }
 
 }
