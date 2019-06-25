@@ -78,4 +78,9 @@ public class NatTreasureHunt extends AppCompatActivity {
 
     }
 
+    public void backButton(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(intent);
+    }
 }

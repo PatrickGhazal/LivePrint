@@ -66,14 +66,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lpc3b_delete_link"/>
+            android:text="@string/lpc3b_delete_link" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="deleteLink"
-            android:text="Delete"/>
+            android:text="Delete" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="backButton"
+            android:text="Back" />
 
 
     </LinearLayout>

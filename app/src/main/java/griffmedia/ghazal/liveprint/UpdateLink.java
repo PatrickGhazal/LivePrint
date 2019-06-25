@@ -57,21 +57,20 @@ public class UpdateLink extends AppCompatActivity {
 
         for (Link compLink : currComp.getLinks()) {
             if (compLink.identical(currLink)) {
-                newLink = new Link(compLink.getPhotoName(), compLink.getVideoName());
-                currComp.removeLink(compLink);
-                if (!newPhotoName.equals("")) {
-                    newLink.setPhotoName(newPhotoName);
-                }
-                if (!newVideoName.equals("")) {
-                    newLink.setVideoName(newVideoName);
-                }
+                newLink = compLink.duplicate();
+                break;
             }
-            break;
         }
 
-        if (newLink != null) {
-            currComp.addLink(newLink);
+        if (!newPhotoName.equals("")) {
+            newLink.setPhotoName(newPhotoName);
         }
+        if (!newVideoName.equals("")) {
+            newLink.setVideoName(newVideoName);
+        }
+
+        currComp.removeLink(currLink);
+        currComp.addLink(newLink);
 
         Funcs.saveFullData(this);
 
@@ -113,5 +112,10 @@ public class UpdateLink extends AppCompatActivity {
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
     }
 
+    public void backButton(View v) {
+        Intent intent = new Intent(this, ControlPanel.class);
+        finish();
+        startActivity(intent);
+    }
 
 }

@@ -72,11 +72,9 @@ public class LPHomePage extends AppCompatActivity {
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
     }
 
-    public static ArrayList<Link> getLinks() {
-        return links;
-    }
-
-    public static void addLink(Link link) {
-        links.add(link);
+    public void backButton(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

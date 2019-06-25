@@ -80,6 +80,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void override(View v) {
+        currLoggedInComp = null;
         Intent intent = new Intent(this, ControlPanel.class);
         startActivity(intent);
     }
@@ -93,17 +94,16 @@ public class LoginPage extends AppCompatActivity {
         View v1 = findViewById(R.id.lpc1_empty1);
         View v2 = findViewById(R.id.lpc1_empty2);
         View v3 = findViewById(R.id.lpc1_empty3);
-        View v4 = findViewById(R.id.lpc1_empty4);
 
-        setGapSizes(v1, v2, v3, v4);
+        setGapSizes(v1, v2, v3);
 
         // versions before M have a different default background colour
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4);
+            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3);
         }
     }
 
-    private void setGapSizes(View v1, View v2, View v3, View v4) {
+    private void setGapSizes(View v1, View v2, View v3) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         double fullWindowHeight = displayMetrics.heightPixels + 0.0;
@@ -116,7 +116,12 @@ public class LoginPage extends AppCompatActivity {
         Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
-        Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
+    }
+
+    public void backButton(View v) {
+        Intent intent = new Intent(this, LPHomePage.class);
+        finish();
+        startActivity(intent);
     }
 
 }

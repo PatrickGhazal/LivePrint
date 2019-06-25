@@ -63,4 +63,10 @@ public class LPListPage extends AppCompatActivity {
         spinner.setAdapter(dataAdapter);
     }
 
+    public void backButton(View v) {
+        Intent intent = new Intent(this, LPHomePage.class);
+        finish();
+        startActivity(intent);
+    }
+
 }

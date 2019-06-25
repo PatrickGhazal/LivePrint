@@ -166,6 +166,12 @@ public class CreateLinkPage extends AppCompatActivity {
 
     }
 
+    public void backButton(View v) {
+        Intent intent = new Intent(this, ControlPanel.class);
+        finish();
+        startActivity(intent);
+    }
+
     /*
         The following commented methods were designed to upload an image from the gallery.
         The behaviour could not reproduced after an initial success, so the methods are

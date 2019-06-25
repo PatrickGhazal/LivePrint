@@ -113,4 +113,10 @@ public class ControlPanel extends AppCompatActivity {
 
         }
     }
+
+    public void backButton(View v) {
+        Intent intent = new Intent(this, LoginPage.class);
+        finish();
+        startActivity(intent);
+    }
 }
