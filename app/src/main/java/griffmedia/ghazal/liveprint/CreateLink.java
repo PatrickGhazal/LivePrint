@@ -1,38 +1,28 @@
 package griffmedia.ghazal.liveprint;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import io.fabric.sdk.android.Fabric;
 
-public class CreateLinkPage extends AppCompatActivity {
+/**
+ * Create Link page.
+ *
+ * @author Patrick Ghazal
+ * @version 1.0
+ */
+public class CreateLink extends AppCompatActivity {
 
     private static final double gapPerc16 = 1.31 / 1.25;
     private static final double gapPerc24 = 0.88 / 1.25;
@@ -56,20 +46,37 @@ public class CreateLinkPage extends AppCompatActivity {
         setFormatting();
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Load Photo</code> button.
+     * Loads a photo from the gallery.
+     *
+     * @param v view that contains the clicked button
+     */
     public void loadPhoto(View v) {
 
         TextView tvImage = findViewById(R.id.selected_image);
         tvImage.setText("chosen_image.jpg");
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Load Video</code> button.
+     * Loads a video from the gallery.
+     *
+     * @param v view that contains the clicked button
+     */
     public void loadVideo(View v) {
-
 
         TextView tvVideo = findViewById(R.id.selected_video);
         tvVideo.setText("chosen_video.mp4");
 
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Create Link</code> button.
+     * Creates a new link based on the provided photo and video file names.
+     *
+     * @param v view that contains the clicked button
+     */
     public void createLink(View v) {
         TextView tvImage = findViewById(R.id.selected_image);
         TextView tvVideo = findViewById(R.id.selected_video);
@@ -81,10 +88,10 @@ public class CreateLinkPage extends AppCompatActivity {
 
             Link newLink = new Link(selectedImage, selectedVideo);
 
-            if (LoginPage.currLoggedInComp != null) {
-                LoginPage.currLoggedInComp.addLink(newLink);
+            if (Login.currLoggedInComp != null) {
+                Login.currLoggedInComp.addLink(newLink);
                 if (fromArtificialLogin) {
-                    LoginPage.currLoggedInComp = null;
+                    Login.currLoggedInComp = null;
                     fromArtificialLogin = false;
                 }
                 Funcs.saveFullData(this);
@@ -99,6 +106,13 @@ public class CreateLinkPage extends AppCompatActivity {
         }
     }
 
+    /**
+     * <code>onClick</code> method for the second <code>Create Link</code> button.
+     * This button appears only if no company is currently logged in.
+     * It simulates a login for the duration of the creation of the link.
+     *
+     * @param v view that contains the clicked button
+     */
     public void createLinkWithCompany(View v) {
         EditText compET = (EditText) findViewById(R.id.lpc3_unknown_comp_et);
         EditText compPassET = (EditText) findViewById(R.id.lpc3_unknown_comp_pass_et);
@@ -108,7 +122,7 @@ public class CreateLinkPage extends AppCompatActivity {
         Data data = Data.getInstance();
         Company foundComp = data.getCompByName(compName);
         if (foundComp != null && foundComp.getPassword().equals(compPass)) {
-            LoginPage.currLoggedInComp = foundComp;
+            Login.currLoggedInComp = foundComp;
             fromArtificialLogin = true;
             createLink(v);
         } else {
@@ -117,6 +131,9 @@ public class CreateLinkPage extends AppCompatActivity {
         }
     }
 
+    /**
+     * Makes the secondary login views visible to provide a logged in company to add the link to
+     */
     private void promptCompany() {
         TextView compTV = (TextView) findViewById(R.id.lpc3_unknown_comp_tv);
         LinearLayout compLayout = (LinearLayout) findViewById(R.id.lpc3_unknown_comp_credentials);
@@ -131,6 +148,9 @@ public class CreateLinkPage extends AppCompatActivity {
         compButton.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Sets the gap sizes and background colour.
+     */
     private void setFormatting() {
         View v1 = findViewById(R.id.lpc3_empty1);
         View v2 = findViewById(R.id.lpc3_empty2);
@@ -147,6 +167,16 @@ public class CreateLinkPage extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets each gap size.
+     *
+     * @param v1 first gap
+     * @param v2 second gap
+     * @param v3 third gap
+     * @param v4 fourth gap
+     * @param v5 fifth gap
+     * @param v6 sixth gap
+     */
     private void setGapSizes(View v1, View v2, View v3, View v4, View v5, View v6) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -166,6 +196,11 @@ public class CreateLinkPage extends AppCompatActivity {
 
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Back</code> button
+     *
+     * @param v view that contains the clicked button
+     */
     public void backButton(View v) {
         Intent intent = new Intent(this, ControlPanel.class);
         finish();

@@ -12,6 +12,12 @@ import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
 
+/**
+ * Entry-point into the app.
+ *
+ * @author Patrick Ghazal
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -48,16 +54,34 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Open LP</code> button.
+     * Opens the <code>LPHome</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
     public void openLP(View v) {
-        Intent intent = new Intent(this, LPHomePage.class);
+        Intent intent = new Intent(this, LPHome.class);
         startActivity(intent);
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Open TH</code> button.
+     * Opens the <code>NatTreasureHunt</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
     public void openTH(View v) {
         Intent intent = new Intent(this, NatTreasureHunt.class);
         startActivity(intent);
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Open Test</code> button.
+     * Opens the <code>TestActivity</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
     public void openTest(View v) {
         Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);

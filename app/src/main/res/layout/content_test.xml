@@ -16,8 +16,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="testBehaviour"
-            android:text="testBehaviour" />
+            android:onClick="readAndPrint"
+            android:text="readAndPrint" />
 
         <Button
             android:layout_width="wrap_content"
@@ -36,6 +36,12 @@
             android:layout_height="wrap_content"
             android:onClick="eraseData"
             android:text="eraseData" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="runTests"
+            android:text="runTests"/>
 
         <Space
             android:layout_width="match_parent"

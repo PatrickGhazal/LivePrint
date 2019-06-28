@@ -14,7 +14,13 @@ import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
 
-public class LPHomePage extends AppCompatActivity {
+/**
+ * Home Page of the LivePrint section of the app.
+ *
+ * @author Patrick Ghazal
+ * @version 1.0
+ */
+public class LPHome extends AppCompatActivity {
 
     private static final double gapPerc = 1.75;
 
@@ -31,16 +37,31 @@ public class LPHomePage extends AppCompatActivity {
         setFormatting();
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Start LP</code> button.
+     * Opens the <code>LPList</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
     public void openCompanyList(View v) {
-        Intent intent = new Intent(this, LPListPage.class);
+        Intent intent = new Intent(this, LPList.class);
         startActivity(intent);
     }
 
-    public void openLogin(View view) {
-        Intent intent = new Intent(this, LoginPage.class);
+    /**
+     * <code>onClick</code> method for the <code>Login</code> button.
+     * Opens the <code>Login</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
+    public void openLogin(View v) {
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
+    /**
+     * Sets the gap sizes and background colour.
+     */
     private void setFormatting() {
 
         links = new ArrayList<Link>();
@@ -57,6 +78,13 @@ public class LPHomePage extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets each gap size.
+     *
+     * @param v1 first gap
+     * @param v2 second gap
+     * @param v3 third gap
+     */
     private void setGapSizes(View v1, View v2, View v3) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -72,6 +100,12 @@ public class LPHomePage extends AppCompatActivity {
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Back</code> button.
+     * Calls <code>finish</code> on <code>this</code> Activity and launches the previous page (the one <code>this</code> was opened from).
+     *
+     * @param v view that contains the clicked button
+     */
     public void backButton(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         finish();

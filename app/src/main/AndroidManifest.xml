@@ -21,7 +21,7 @@
         <activity
             android:name=".UpdateLink"
             android:label="@string/title_activity_update_link"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
@@ -31,7 +31,7 @@
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateLinkPage"
+            android:name=".CreateLink"
             android:label="@string/title_activity_create_link_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -39,11 +39,11 @@
             android:label="@string/title_activity_control_panel"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginPage"
+            android:name=".Login"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LPListPage"
+            android:name=".LPList"
             android:label="@string/title_activity_lplist_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -51,7 +51,7 @@
             android:label="@string/title_activity_nat_treasure_hunt"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LPHomePage"
+            android:name=".LPHome"
             android:label="@string/title_activity_lphome_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

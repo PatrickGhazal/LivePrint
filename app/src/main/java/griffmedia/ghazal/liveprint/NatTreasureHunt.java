@@ -19,6 +19,12 @@ import java.io.InputStreamReader;
 
 import io.fabric.sdk.android.Fabric;
 
+/**
+ * Home Page of the National Treasure Hunt section of the app.
+ *
+ * @author Patrick Ghazal
+ * @version 1.0
+ */
 public class NatTreasureHunt extends AppCompatActivity {
 
     // percentage of screen height that the gaps should be
@@ -40,6 +46,12 @@ public class NatTreasureHunt extends AppCompatActivity {
         setFormatting();
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Open Camera</code> button.
+     * TODO: Update the Javadoc when the method is properly implemented
+     *
+     * @param v view that contains the clicked button
+     */
     public void openCamera(View v) {
 
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
@@ -47,6 +59,9 @@ public class NatTreasureHunt extends AppCompatActivity {
 
     }
 
+    /**
+     * Sets the gap sizes and background colour.
+     */
     private void setFormatting() {
         View v1 = findViewById(R.id.th_empty1);
         View v2 = findViewById(R.id.th_empty2);
@@ -61,6 +76,14 @@ public class NatTreasureHunt extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets each gap size.
+     *
+     * @param v1 first gap
+     * @param v2 second gap
+     * @param v3 third gap
+     * @param v4 fourth gap
+     */
     private void setGapSizes(View v1, View v2, View v3, View v4) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -78,6 +101,12 @@ public class NatTreasureHunt extends AppCompatActivity {
 
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Back</code> button.
+     * Calls <code>finish</code> on <code>this</code> Activity and launches the previous page (the one <code>this</code> was opened from).
+     *
+     * @param v view that contains the clicked button
+     */
     public void backButton(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         finish();

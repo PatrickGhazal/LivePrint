@@ -15,6 +15,12 @@ import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
 
+/**
+ * Control Panel for companies to create/update/delete links.
+ *
+ * @author Patrick Ghazal
+ * @version 1.0
+ */
 public class ControlPanel extends AppCompatActivity {
 
     private static final double gapPerc = 0.88;
@@ -30,11 +36,20 @@ public class ControlPanel extends AppCompatActivity {
         setFormatting();
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Create Link</code> button.
+     * Opens the <code>Create Link</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
     public void openCreateLink(View v) {
-        Intent intent = new Intent(this, CreateLinkPage.class);
+        Intent intent = new Intent(this, CreateLink.class);
         startActivity(intent);
     }
 
+    /**
+     * Sets the gap sizes and background colour.
+     */
     private void setFormatting() {
 
         View v1 = findViewById(R.id.lpc2_empty1);
@@ -51,6 +66,13 @@ public class ControlPanel extends AppCompatActivity {
         dispExistingLinks();
     }
 
+    /**
+     * Sets each gap size.
+     *
+     * @param v1 first gap
+     * @param v2 second gap
+     * @param v3 third gap
+     */
     private void setGapSizes(View v1, View v2, View v3) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -66,12 +88,15 @@ public class ControlPanel extends AppCompatActivity {
         Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
     }
 
+    /**
+     * Displays the existing links for the relevant company.
+     */
     private void dispExistingLinks() {
         TextView linksTV = (TextView) findViewById(R.id.lpc2_existing_links);
         TextView linksTitleTV = (TextView) findViewById(R.id.lpc2_existing_links_title);
         linksTitleTV.setTypeface(null, Typeface.BOLD);
         String linksDisp = "";
-        Company comp = LoginPage.currLoggedInComp;
+        Company comp = Login.currLoggedInComp;
         if (comp != null) {
             linksTitleTV.setText("Links of " + comp.getName() + ":");
             if (comp.getLinks().size() == 0) {
@@ -88,6 +113,12 @@ public class ControlPanel extends AppCompatActivity {
         linksTV.setText(linksDisp);
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Update Link</code> button.
+     * Opens the <code>Update Link</code> page for the chosen link.
+     *
+     * @param v view that contains the clicked button
+     */
     public void updateLink(View v) {
         EditText linkNumET = (EditText) findViewById(R.id.lpc2_update_link_value);
         String linkNumStr = linkNumET.getText().toString();
@@ -98,7 +129,7 @@ public class ControlPanel extends AppCompatActivity {
             TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
             errorTV.setText("Link value invalid.");
         }
-        Company currComp = LoginPage.currLoggedInComp;
+        Company currComp = Login.currLoggedInComp;
         if (currComp != null) {
             try {
                 Link link = currComp.getLinks().get(linkNum - 1); // -1 because they're listed 1, 2, 3 not 0, 1, 2
@@ -114,8 +145,14 @@ public class ControlPanel extends AppCompatActivity {
         }
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Back</code> button.
+     * Calls <code>finish</code> on <code>this</code> Activity and launches the previous page (the one <code>this</code> was opened from).
+     *
+     * @param v view that contains the clicked button
+     */
     public void backButton(View v) {
-        Intent intent = new Intent(this, LoginPage.class);
+        Intent intent = new Intent(this, Login.class);
         finish();
         startActivity(intent);
     }
