@@ -26,11 +26,10 @@
             android:onClick="openCreateLink"
             android:text="@string/lpc2_button_create_link" />
 
-        <View
-            android:id="@+id/lpc2_empty1"
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,11 +37,10 @@
             android:layout_gravity="center"
             android:text="@string/lpc2_intro_modify" />
 
-        <View
-            android:id="@+id/lpc2_empty2"
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.075" />
 
         <TextView
             android:id="@+id/lpc2_existing_links_title"
@@ -58,11 +56,10 @@
             android:layout_gravity="center"
             android:text="" />
 
-        <View
-            android:id="@+id/lpc2_empty3"
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"

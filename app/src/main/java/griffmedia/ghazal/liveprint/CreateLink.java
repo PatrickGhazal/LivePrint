@@ -1,11 +1,9 @@
 package griffmedia.ghazal.liveprint;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,11 +22,6 @@ import io.fabric.sdk.android.Fabric;
  */
 public class CreateLink extends AppCompatActivity {
 
-    private static final double gapPerc16 = 1.31 / 1.25;
-    private static final double gapPerc24 = 0.88 / 1.25;
-    private static final double gapPerc3 = 2.62 / 1.25;
-    private static final double gapPerc5 = 4.38 / 1.5;
-
     private static boolean fromArtificialLogin = false;
 
 //    private static final int GET_FROM_GALLERY = 77;
@@ -42,8 +35,6 @@ public class CreateLink extends AppCompatActivity {
         setContentView(R.layout.activity_create_link_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        setFormatting();
     }
 
     /**
@@ -140,60 +131,14 @@ public class CreateLink extends AppCompatActivity {
         EditText compET = (EditText) findViewById(R.id.lpc3_unknown_comp_et);
         EditText compPassET = (EditText) findViewById(R.id.lpc3_unknown_comp_pass_et);
         Button compButton = (Button) findViewById(R.id.lpc3_unknown_comp_button);
+        Button oldButton = (Button) findViewById(R.id.lpc3_create_link_button);
 
         compTV.setVisibility(View.VISIBLE);
         compLayout.setVisibility(View.VISIBLE);
         compET.setVisibility(View.VISIBLE);
         compPassET.setVisibility(View.VISIBLE);
         compButton.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * Sets the gap sizes and background colour.
-     */
-    private void setFormatting() {
-        View v1 = findViewById(R.id.lpc3_empty1);
-        View v2 = findViewById(R.id.lpc3_empty2);
-        View v3 = findViewById(R.id.lpc3_empty3);
-        View v4 = findViewById(R.id.lpc3_empty4);
-        View v5 = findViewById(R.id.lpc3_empty5);
-        View v6 = findViewById(R.id.lpc3_empty6);
-
-        setGapSizes(v1, v2, v3, v4, v5, v6);
-
-        // versions before M have a different default background colour
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3, v4, v5, v6);
-        }
-    }
-
-    /**
-     * Sets each gap size.
-     *
-     * @param v1 first gap
-     * @param v2 second gap
-     * @param v3 third gap
-     * @param v4 fourth gap
-     * @param v5 fifth gap
-     * @param v6 sixth gap
-     */
-    private void setGapSizes(View v1, View v2, View v3, View v4, View v5, View v6) {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        double fullWindowHeight = displayMetrics.heightPixels + 0.0;
-        double density = displayMetrics.density;
-
-        // add a dividing factor for screens with height < 1000 px
-        if (fullWindowHeight < 1000)
-            density /= 1.5;
-
-        Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc16, fullWindowHeight), density);
-        Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc24, fullWindowHeight), density);
-        Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc3, fullWindowHeight), density);
-        Funcs.setGapHeight(v4, Funcs.resizeHeight(gapPerc24, fullWindowHeight), density);
-        Funcs.setGapHeight(v5, Funcs.resizeHeight(gapPerc5, fullWindowHeight), density);
-        Funcs.setGapHeight(v6, Funcs.resizeHeight(gapPerc16, fullWindowHeight), density);
-
+        oldButton.setVisibility(View.INVISIBLE);
     }
 
     /**

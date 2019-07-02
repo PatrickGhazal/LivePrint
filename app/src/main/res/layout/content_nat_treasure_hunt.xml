@@ -18,12 +18,10 @@
             android:layout_height="115dp"
             android:src="@drawable/top_banner" />
 
-        <!--width = 1500px, height = 300px-->
-        <View
-            android:id="@+id/th_empty1"
-            android:layout_width="fill_parent"
+        <Space
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FAFAFA" />
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,11 +41,10 @@
             android:layout_gravity="center"
             android:text="@string/th_intro3_to_find" />
 
-        <View
-            android:id="@+id/th_empty2"
-            android:layout_width="fill_parent"
+        <Space
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FAFAFA" />
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,11 +64,10 @@
             android:layout_gravity="center"
             android:text="@string/th_intro6_tip2" />
 
-        <View
-            android:id="@+id/th_empty3"
-            android:layout_width="fill_parent"
+        <Space
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FAFAFA" />
+            android:layout_weight="1" />
 
         <Button
             android:layout_width="wrap_content"
@@ -82,11 +78,10 @@
             android:text="@string/th_button_open_camera"
             android:textColor="@color/cardview_light_background" />
 
-        <View
-            android:id="@+id/th_empty4"
-            android:layout_width="fill_parent"
+        <Space
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FAFAFA" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/get_book_text"

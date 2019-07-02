@@ -23,42 +23,6 @@ import static android.content.Context.*;
 public class Funcs {
 
     /**
-     * Computes the real height of the gap based on the percentage of the window height.
-     *
-     * @param gapPerc      double containing the percentage of the window height the gap should be
-     * @param windowHeight double containing the total height of the window
-     * @return the computed height of the gap
-     */
-    public static int resizeHeight(double gapPerc, double windowHeight) {
-        return (int) Math.round(gapPerc * windowHeight / 100.0);
-    }
-
-    /**
-     * Sets the newly-computed height to the specified view.
-     *
-     * @param view      view upon which to set the height
-     * @param heightVal height of the gap
-     * @param density   double containing the density parameter of the layout
-     */
-    public static void setGapHeight(View view, int heightVal, double density) {
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = (int) Math.round(heightVal * density);
-        view.setLayoutParams(layoutParams);
-    }
-
-    /**
-     * Sets the background colour of the specified views.
-     *
-     * @param colour String containing the required background colour
-     * @param views  views for which the background color is changed
-     */
-    public static void setBGColour(String colour, View... views) {
-        for (View v : views) {
-            v.setBackgroundColor(Color.parseColor(colour));
-        }
-    }
-
-    /**
      * Reads the data file and calls the load method to parse it and initialize data elements.
      *
      * @param context Activity that calls the method

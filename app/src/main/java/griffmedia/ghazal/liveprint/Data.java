@@ -179,11 +179,10 @@ class Company {
      * @return the formatted company data
      */
     public String toString() {
-        String returned = "";
+        String returned = this.getName() + " :: " + this.getPassword() + " :: ";
         if (this.getLinks().size() == 0) {
-            returned = this.getName() + " :: " + this.getPassword() + " :: no_links";
+            returned += "no_links";
         } else {
-            returned = this.getName() + " :: " + this.getPassword() + " :: ";
             for (Link l : this.getLinks()) {
                 returned += (l.toString() + "---");
             }
@@ -256,7 +255,7 @@ class Link {
      * @return true if the links are identical
      */
     public boolean identical(Link link) {
-        return this.getVideoName().equals(link.getVideoName()) && this.getPhotoName().equals(link.getPhotoName());
+        return this.getPhotoName().equals(link.getPhotoName()) && this.getVideoName().equals(link.getVideoName());
     }
 
     public void setPhotoName(String newPhotoName) {

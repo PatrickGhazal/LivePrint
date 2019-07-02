@@ -20,11 +20,10 @@
             android:layout_gravity="center"
             android:text="" />
 
-        <View
-            android:id="@+id/lpc3b_empty1"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="match_parent"
@@ -57,11 +56,10 @@
             android:onClick="updateLink"
             android:text="Update" />
 
-        <View
-            android:id="@+id/lpc3b_empty2"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="match_parent"

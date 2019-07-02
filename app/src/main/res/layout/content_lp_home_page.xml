@@ -13,11 +13,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/lp0_empty1"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,11 +24,10 @@
             android:layout_gravity="center"
             android:text="@string/lp0_intro1_welcome" />
 
-        <View
-            android:id="@+id/lp0_empty2"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,11 +44,10 @@
             android:text="@string/lp0_button_start_lp"
             android:textColor="@color/cardview_light_background" />
 
-        <View
-            android:id="@+id/lp0_empty3"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#FAFAFA" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,7 +67,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="0.75" />
 
         <Button
             android:layout_width="wrap_content"

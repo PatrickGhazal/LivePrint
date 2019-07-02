@@ -1,11 +1,9 @@
 package griffmedia.ghazal.liveprint;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,8 +24,6 @@ public class Login extends AppCompatActivity {
 
     public static Company currLoggedInComp = null;
 
-    private static final double gapPerc = 1.75;
-
     private static ArrayList<String> credentials;
 
     @Override
@@ -37,8 +33,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        setFormatting();
 
         loadCredentials();
     }
@@ -117,44 +111,6 @@ public class Login extends AppCompatActivity {
     public void register(View v) {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
-    }
-
-    /**
-     * Sets the gap sizes and background colour.
-     */
-    private void setFormatting() {
-        View v1 = findViewById(R.id.lpc1_empty1);
-        View v2 = findViewById(R.id.lpc1_empty2);
-        View v3 = findViewById(R.id.lpc1_empty3);
-
-        setGapSizes(v1, v2, v3);
-
-        // versions before M have a different default background colour
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            Funcs.setBGColour(Data.bgColourBeforeM, v1, v2, v3);
-        }
-    }
-
-    /**
-     * Sets each gap size.
-     *
-     * @param v1 first gap
-     * @param v2 second gap
-     * @param v3 third gap
-     */
-    private void setGapSizes(View v1, View v2, View v3) {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        double fullWindowHeight = displayMetrics.heightPixels + 0.0;
-        double density = displayMetrics.density;
-
-        // add a dividing factor for screens with height < 1000 px
-        if (fullWindowHeight < 1000)
-            density /= 1.5;
-
-        Funcs.setGapHeight(v1, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
-        Funcs.setGapHeight(v2, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
-        Funcs.setGapHeight(v3, Funcs.resizeHeight(gapPerc, fullWindowHeight), density);
     }
 
     /**
