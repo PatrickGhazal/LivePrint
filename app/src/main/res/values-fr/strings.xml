@@ -1,0 +1,77 @@
+<resources>
+
+    <string name="app_name">LivePrint</string>
+    <string name="title_activity_lphome_page">LPHome</string>
+    <string name="title_activity_nat_treasure_hunt">NatTreasureHunt</string>
+    <string name="title_activity_lplist_page">LPList</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_control_panel">ControlPanel</string>
+    <string name="title_activity_create_link_page">CreateLink</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_update_link">UpdateLink</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="th_button_open_camera">Démarrer !</string>
+    <string name="th_get_book">Vous n\'avez pas encore le livre? Achetez le <a href="http://www.google.com">ICI</a></string>
+    <string name="th_intro1_welcome">Bienvenue dans l\'application National Treasure Hunt !</string>
+    <string name="th_intro2_scan_photos">Scannez des images du livre <i>A Century of NHL Memories</i></string>
+    <string name="th_intro3_to_find">pour <b>trouver des trésors cachés</b> et <b>gagner d\'incroyables prix</b> !</string>
+    <string name="th_intro4_start_by"><b>COMMENCEZ EN SCANNANT LA PREMIERE DE COUVERTURE !</b></string>
+    <string name="th_intro5_tip"><i>Conseil: Tenez votre téléphone au-dessus de l\'image.</i></string>
+    <string name="th_intro6_tip2"><i>Pas de clic nécessaire !</i></string>
+    <string name="button_open_lp">Ouvrir LP</string>
+    <string name="button_open_th">Ouvrir TH</string>
+    <string name="button_open_test">Ouvrir Test</string>
+    <string name="button_back">Retour</string>
+    <string name="lp0_intro1_welcome">Bienvenue dans l\'application LivePrint !</string>
+    <string name="lp0_intro2_user">Pour utiliser LivePrint, cliquez le bouton ci-dessous !</string>
+    <string name="lp0_button_start_lp">Lancer LP</string>
+    <string name="lp0_intro3_client">Autrement, cliquez ci-dessous pour accéder au panneau de contrôle de votre compagnie.</string>
+    <string name="lp0_button_login">Connexion</string>
+    <string name="lp0_button_switch_lang">English</string>
+    <string name="lpu1_choose_company">Selectionnez la compagnie pour laquelle</string>
+    <string name="lpu1_choose_company2">vous souhaitez utiliser LivePrint.</string>
+    <string name="lpu1_button_open_camera">Ouvrir Camera</string>
+    <string name="lpc1_enter_user">Nom d\'utilisateur:</string>
+    <string name="lpc1_enter_pass">Mot de passe:</string>
+    <string name="lpc1_invalid_credentials">Identifiants non reconnus. Veuillez réessayer.</string>
+    <string name="lpc1_button_login">Connexion</string>
+    <string name="lpc1_button_register">Créer un compte</string>
+    <string name="lpc1_no_account_register">Vous n\'avez pas de compte? Créez-en un ci-dessous:</string>
+    <string name="lpc1b_register">Entrez le nom de votre compagnie et le mot de passe que vous désirez:</string>
+    <string name="lpc1b_hint_company">Nom de la compagnie</string>
+    <string name="lpc1b_hint_password">Mot de passe</string>
+    <string name="lpc1b_button_register">Enregistrement</string>
+    <string name="lpc1b_error_account_exists">Erreur: un compte existe déjà pour cette compagnie.</string>
+    <string name="lpc1b_error_invalid_creds">Erreur: identifiants non valides.</string>
+    <string name="lpc2_intro_create">Créez un nouveau lien en cliquant ci-dessous:</string>
+    <string name="lpc2_intro_modify">Autrement, vous pouvez voir/modifier vos liens existants ci-dessous.</string>
+    <string name="lpc2_existing_links_title">Liens de </string>
+    <string name="lpc2_no_existing_links">Pas de lien existant.</string>
+    <string name="lpc2_no_logged_company">Pas de compagnie connectée.</string>
+    <string name="lpc2_intro_modify2">Entrez le numéro du lien que vous souhaitez mettre à jour (modification/suppression) et cliquez le bouton Mettre à jour.</string>
+    <string name="lpc2_button_create_link">Créer un lien</string>
+    <string name="lpc2_update_button">Mettre à jour</string>
+    <string name="lpc2_invalid_link_value">Valeur non valide.</string>
+    <string name="lpc3_upload_photo">Choisissez d\'abord l\'image qui doit être reconnue.</string>
+    <string name="lpc3_button_photo">Choisir l\'image</string>
+    <string name="lpc3_selected_image"><i>Image choisie:</i></string>
+    <string name="lpc3_upload_video">Puis, choisissez la vidéo qui doit etre jouée.</string>
+    <string name="lpc3_button_video">Choisir la vidéo</string>
+    <string name="lpc3_selected_video"><i>Vidéo choisie:</i></string>
+    <string name="lpc3_button_create">Créer un lien</string>
+    <string name="lpc3_create_link_fail">Echec…</string>
+    <string name="lpc3_unknown_comp">Compagnie non-déterminée. Veuillez entrer les identifiants de la compagnie pour laquelle vous créez ce lien puis cliquez ci-dessous.</string>
+    <string name="lpc3_unknown_comp_hint">Nom de la compagnie</string>
+    <string name="lpc3_unknown_comp_pass_hint">Mot de passe</string>
+    <string name="lpc3b_info1">Mise à jour du Lien </string>
+    <string name="lpc3b_info2">\n de la Compagnie </string>
+    <string name="lpc3b_update_photo_name">Nouveau nom de la photo</string>
+    <string name="lpc3b_update_video_name">Nouveau nom de la vidéo</string>
+    <string name="lpc3b_update_names">Utilisez les champs suivants pour mettre à jour les noms de fichiers. Si un champ est laissé vide, l\'information correspondante ne sera pas mise à jour.</string>
+    <string name="lpc3b_delete_link">Autrement, cliquez le bouton ci-dessous pour supprimer le lien.</string>
+    <string name="lpc3b_button_update">Mettre à jour</string>
+    <string name="lpc3b_button_delete">Supprimer</string>
+
+</resources>

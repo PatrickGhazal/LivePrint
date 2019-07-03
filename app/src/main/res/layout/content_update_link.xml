@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="updateLink"
-            android:text="Update" />
+            android:text="@string/lpc3b_button_update" />
 
         <Space
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="deleteLink"
-            android:text="Delete" />
+            android:text="@string/lpc3b_button_delete" />
 
         <Space
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="backButton"
-            android:text="Back" />
+            android:text="@string/button_back" />
 
 
     </LinearLayout>

@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
         } else {
             TextView tvError = (TextView) findViewById(R.id.login_error);
-            tvError.setText("Credentials unrecognized. Please try again.");
+            tvError.setText(R.string.lpc1_invalid_credentials);
         }
     }
 

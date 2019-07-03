@@ -40,6 +40,7 @@ public class CreateLink extends AppCompatActivity {
     /**
      * <code>onClick</code> method for the <code>Load Photo</code> button.
      * Loads a photo from the gallery.
+     * TODO: Update the Javadoc when the method is properly implemented
      *
      * @param v view that contains the clicked button
      */
@@ -52,6 +53,7 @@ public class CreateLink extends AppCompatActivity {
     /**
      * <code>onClick</code> method for the <code>Load Video</code> button.
      * Loads a video from the gallery.
+     * TODO: Update the Javadoc when the method is properly implemented
      *
      * @param v view that contains the clicked button
      */
@@ -93,7 +95,7 @@ public class CreateLink extends AppCompatActivity {
             }
         } else {
             TextView tvSuccess = findViewById(R.id.create_success);
-            tvSuccess.setText("Failure..");
+            tvSuccess.setText(R.string.lpc3_create_link_fail);
         }
     }
 
@@ -118,7 +120,7 @@ public class CreateLink extends AppCompatActivity {
             createLink(v);
         } else {
             TextView tvSuccess = findViewById(R.id.create_success);
-            tvSuccess.setText("Failure..");
+            tvSuccess.setText(R.string.lpc3_create_link_fail);
         }
     }
 

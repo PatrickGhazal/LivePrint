@@ -63,11 +63,11 @@ public class Register extends AppCompatActivity {
                 startActivity(loginIntent);
             } else {
                 TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
-                errorTV.setText("Error: this company already has a registered account.");
+                errorTV.setText(R.string.lpc1b_error_account_exists);
             }
         } else {
             TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
-            errorTV.setText("Error: invalid credentials.");
+            errorTV.setText(R.string.lpc1b_error_invalid_creds);
         }
     }
 

@@ -51,11 +51,12 @@ public class ControlPanel extends AppCompatActivity {
         TextView linksTitleTV = (TextView) findViewById(R.id.lpc2_existing_links_title);
         linksTitleTV.setTypeface(null, Typeface.BOLD);
         String linksDisp = "";
+
         Company comp = Login.currLoggedInComp;
         if (comp != null) {
-            linksTitleTV.setText("Links of " + comp.getName() + ":");
+            linksTitleTV.setText(R.string.lpc2_existing_links_title + comp.getName() + ":");
             if (comp.getLinks().size() == 0) {
-                linksDisp += "No existing links.";
+                linksDisp += R.string.lpc2_no_existing_links;
             }
             int counter = 1;
             for (Link link : comp.getLinks()) {
@@ -63,7 +64,8 @@ public class ControlPanel extends AppCompatActivity {
                 counter++;
             }
         } else {
-            linksDisp = "No company logged in.";
+            linksDisp = "";
+            linksDisp += R.string.lpc2_no_logged_company;
         }
         linksTV.setText(linksDisp);
     }
@@ -82,7 +84,7 @@ public class ControlPanel extends AppCompatActivity {
             linkNum = Integer.parseInt(linkNumStr);
         } catch (NumberFormatException e) {
             TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
-            errorTV.setText("Link value invalid.");
+            errorTV.setText(R.string.lpc2_invalid_link_value);
         }
         Company currComp = Login.currLoggedInComp;
         if (currComp != null) {
@@ -94,7 +96,7 @@ public class ControlPanel extends AppCompatActivity {
                 startActivity(intent);
             } catch (IndexOutOfBoundsException e) {
                 TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
-                errorTV.setText("Link value invalid.");
+                errorTV.setText(R.string.lpc2_invalid_link_value);
             }
 
         }

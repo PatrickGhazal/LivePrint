@@ -40,7 +40,7 @@ public class UpdateLink extends AppCompatActivity {
     private void setup() {
         if (currComp != null && currLink != null) {
             TextView introTV = (TextView) findViewById(R.id.lpc3b_intro_tv);
-            introTV.setText("Currently updating Link " + currLink.toString() + "\nof Company " + currComp.getName() + "\n");
+            introTV.setText(R.string.lpc3b_info1 + currLink.toString() + R.string.lpc3b_info2 + currComp.getName() + "\n");
         } else {
             finish();
         }

@@ -1,6 +1,7 @@
 package griffmedia.ghazal.liveprint;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
+
+import java.util.Locale;
 
 import io.fabric.sdk.android.Fabric;
 

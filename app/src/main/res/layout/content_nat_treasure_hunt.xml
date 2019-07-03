@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="backButton"
-            android:text="Back" />
+            android:text="@string/button_back" />
 
     </LinearLayout>
 
