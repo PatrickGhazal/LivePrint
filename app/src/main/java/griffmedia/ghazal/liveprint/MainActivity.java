@@ -84,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
         Funcs.startActivityFunc(this, TestActivity.class);
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Open Demo</code> button.
+     * Opens the <code>Demo</code> page.
+     *
+     * @param v view that contains the clicked button
+     */
     public void demoButton(View v) {
         Funcs.startActivityFunc(this, Demo.class);
     }

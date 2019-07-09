@@ -54,24 +54,10 @@ public class CreateLink extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    /**
-     * <code>onClick</code> method for the <code>Load Photo</code> button.
-     * Loads a photo from the gallery.
-     * TODO: Update the Javadoc when the method is properly implemented
-     *
-     * @param v view that contains the clicked button
-     */
-//    public void loadPhoto(View v) {
-//
-//        TextView tvImage = findViewById(R.id.selected_image);
-//        tvImage.setText("chosen_image.jpg");
-//    }
-
-
+    // TODO: Update the Javadoc when the method is properly implemented
     /**
      * <code>onClick</code> method for the <code>Load Video</code> button.
      * Loads a video from the gallery.
-     * TODO: Update the Javadoc when the method is properly implemented
      *
      * @param v view that contains the clicked button
      */
@@ -160,29 +146,13 @@ public class CreateLink extends AppCompatActivity {
         oldButton.setVisibility(View.INVISIBLE);
     }
 
+    // TODO: Update the Javadoc when the method is properly implemented
     /**
-     * <code>onClick</code> method for the <code>Back</code> button
+     * <code>onClick</code> method for the <code>Load Photo</code> button.
+     * Loads a photo from the gallery/takes a new photo with the camera.
      *
      * @param v view that contains the clicked button
      */
-    public void backButton(View v) {
-        Funcs.startActivityFunc(this, ControlPanel.class);
-    }
-
-    /*
-        The following commented methods were designed to upload an image from the gallery.
-        The behaviour could not reproduced after an initial success, so the methods are
-        set aside for the moment in order to work on something else.
-        For clarity purposes, the concerned methods are:
-            loadPhoto
-            loadPhotoFullIntent
-            onRequestPermissionsResult
-            hasPermissions
-            createImageFile
-            onActivityResult
-        Three global variables were also commented out for the same reason.
-     */
-
     public void loadPhoto(View v) {
         if (Build.VERSION.SDK_INT >= 23) {
             String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -197,6 +167,10 @@ public class CreateLink extends AppCompatActivity {
     }
 
     //TODO: works with photo capture but not selection from gallery
+
+    /**
+     * Does the actual work of loading the photo. Called by <code>loadPhoto</code>.
+     */
     private void loadPhotoFullIntent() {
 //        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         Intent cameraIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -233,6 +207,13 @@ public class CreateLink extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks that the necessary permissions are granted.
+     *
+     * @param context <code>this Activity</code>
+     * @param permissions names of the permissions to be checked
+     * @return true if all necessary permissions are granted
+     */
     private static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {
@@ -244,6 +225,12 @@ public class CreateLink extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Creates an image file to store the newly-taken picture.
+     *
+     * @return the newly-created image file
+     * @throws IOException
+     */
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -274,6 +261,15 @@ public class CreateLink extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * <code>onClick</code> method for the <code>Back</code> button
+     *
+     * @param v view that contains the clicked button
+     */
+    public void backButton(View v) {
+        Funcs.startActivityFunc(this, ControlPanel.class);
     }
 
 

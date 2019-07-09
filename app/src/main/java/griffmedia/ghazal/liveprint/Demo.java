@@ -29,6 +29,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Demo class for the inspection process based on LivePrint.
+ *
+ * @author Patrick Ghazal
+ * @version 1.0
+ */
 public class Demo extends AppCompatActivity {
 
     private static final int GET_FROM_GALLERY = 77;
@@ -51,6 +57,12 @@ public class Demo extends AppCompatActivity {
         questions.add(createQuestion("engine", "3rd engine Question", "4th engine Answer", "5th engine Answer", "other"));
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Camera</code> button.
+     * Takes a new picture with the camera.
+     *
+     * @param v view that contains the clicked button
+     */
     public void demoCamera(View v) {
         if (Build.VERSION.SDK_INT >= 23) {
             String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -64,9 +76,11 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * Does the actual work of loading the photo. Called by <code>loadPhoto</code>.
+     */
     private void loadPhotoFullIntent() {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        Intent cameraIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
@@ -100,6 +114,13 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks that the necessary permissions are granted.
+     *
+     * @param context     <code>this Activity</code>
+     * @param permissions names of the permissions to be checked
+     * @return true if all necessary permissions are granted
+     */
     private static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {
@@ -111,6 +132,12 @@ public class Demo extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Creates an image file to store the newly-taken picture.
+     *
+     * @return the newly-created image file
+     * @throws IOException
+     */
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -145,11 +172,19 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets up the view elements used to fill out the form.
+     */
     private void setupForm() {
         String foundResource = setIdentificationString();
         setupSpinner(0, foundResource);
     }
 
+    /**
+     * Sets up part of the view elements used to fill out the form.
+     *
+     * @return the name of the resource identified in the photo
+     */
     private String setIdentificationString() {
         String recognized = " " + recognizeImage(mImageBitmap);
 
@@ -165,10 +200,24 @@ public class Demo extends AppCompatActivity {
         return recognized;
     }
 
+    // TODO: hardcoded
+
+    /**
+     * Identifies a resource in a picture.
+     *
+     * @param bm Bitmap that contains the picture to be identified
+     * @return the name of the identified resource
+     */
     private String recognizeImage(Bitmap bm) {
         return "engine";
     }
 
+    /**
+     * Sets up the spinner and other view elements to answer the questions.
+     *
+     * @param qNum    question number
+     * @param resName name of the currently identified resource
+     */
     private void setupSpinner(int qNum, String resName) {
 
         TextView questionTV = (TextView) findViewById(R.id.demo_question);
@@ -196,6 +245,14 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creates a <code>Question</code> instance based on the provided parameters.
+     *
+     * @param resName  resource to which the question is attached
+     * @param question text of the question
+     * @param answers  one or more possible answers to the question
+     * @return the new <code>Question</code> instance
+     */
     private Question createQuestion(String resName, String question, String... answers) {
         Question newQ = new Question(resName, question);
         for (String answer : answers) {
@@ -204,6 +261,13 @@ public class Demo extends AppCompatActivity {
         return newQ;
     }
 
+    /**
+     * Finds the next question to aske based on the resource name and the question number.
+     *
+     * @param qNum    question number
+     * @param resName name of the currently identified resource
+     * @return the appropriate <code>Question</code> instance
+     */
     private Question findQuestion(int qNum, String resName) {
         ArrayList<Question> qsWithRightRes = qetQuestionsPerResName(resName);
         if (qsWithRightRes.size() > qNum) {
@@ -213,6 +277,12 @@ public class Demo extends AppCompatActivity {
         return null;
     }
 
+    /**
+     * Identifies all questions associated to the resource name.
+     *
+     * @param resName resource for which the questions are extracted
+     * @return an <code>ArrayList</code> of all <code>Questions</code> associated to tha given resource
+     */
     private ArrayList<Question> qetQuestionsPerResName(String resName) {
         ArrayList<Question> qsWithRightRes = new ArrayList<Question>();
         for (Question q : questions) {
@@ -223,6 +293,12 @@ public class Demo extends AppCompatActivity {
         return qsWithRightRes;
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Answer</code> button.
+     * Processes the given answer.
+     *
+     * @param v view that contains the clicked button
+     */
     public void nextQuestion(View v) {
 
         Spinner spinner = (Spinner) findViewById(R.id.answers_spinner);
@@ -241,6 +317,12 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * <code>onClick</code> method for the second <code>Answer</code> button.
+     * Processes the user-provided answer.
+     *
+     * @param v view that contains the clicked button
+     */
     public void nextQuestionFiller(View v) {
         EditText fillET = (EditText) findViewById(R.id.demo_fill_text);
         String answer = fillET.getText().toString();
@@ -248,6 +330,11 @@ public class Demo extends AppCompatActivity {
         questionAnswered(answer);
     }
 
+    /**
+     * Processes the answer, saves it, and loads the next question.
+     *
+     * @param answer chosen answer
+     */
     private void questionAnswered(String answer) {
         ArrayList<Question> qsWithRightResName = qetQuestionsPerResName(currQuestion.resource);
 
@@ -286,6 +373,11 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * Saves the set of resource/question/answer
+     *
+     * @param answer provided answer
+     */
     private void saveAnswer(String answer) {
 
         String toSave = currQuestion.toStringNoAnswers();
@@ -298,6 +390,11 @@ public class Demo extends AppCompatActivity {
         }
     }
 
+    /**
+     * <code>onClick</code> method for the <code>Back</code> button
+     *
+     * @param v view that contains the clicked button
+     */
     public void backButton(View v) {
         Funcs.startActivityFunc(this, MainActivity.class);
     }
@@ -305,6 +402,9 @@ public class Demo extends AppCompatActivity {
 
 }
 
+/**
+ * Stores a grouping of a resource name, a question about that resource, and possible answers to that question.
+ */
 class Question {
 
     String resource;
@@ -321,6 +421,7 @@ class Question {
         this.answers.add(a);
     }
 
+    @Override
     public String toString() {
         String ts = toStringNoAnswers();
         for (String answer : answers) {

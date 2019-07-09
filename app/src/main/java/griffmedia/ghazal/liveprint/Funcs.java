@@ -151,6 +151,12 @@ public class Funcs {
         osw.close();
     }
 
+    /**
+     * Closes the previous <code>Activity</code> and starts the new one.
+     *
+     * @param previous Activity that calls the method and is being closed
+     * @param toOpen   class to open
+     */
     public static void startActivityFunc(Activity previous, Class toOpen) {
         Intent intent = new Intent(previous, toOpen);
         previous.finish();
