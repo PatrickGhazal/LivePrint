@@ -40,7 +40,7 @@ public class UpdateLink extends AppCompatActivity {
     private void setup() {
         if (currComp != null && currLink != null) {
             TextView introTV = (TextView) findViewById(R.id.lpc3b_intro_tv);
-            introTV.setText(R.string.lpc3b_info1 + currLink.toString() + R.string.lpc3b_info2 + currComp.getName() + "\n");
+            introTV.setText(getString(R.string.lpc3b_info1) + "\n" + currLink.toString() + "\n" + getString(R.string.lpc3b_info2) + "\n" + currComp.getName());
         } else {
             finish();
         }
@@ -80,8 +80,7 @@ public class UpdateLink extends AppCompatActivity {
 
         Funcs.saveFullData(this);
 
-        Intent intent = new Intent(this, ControlPanel.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, ControlPanel.class);
 
     }
 
@@ -94,8 +93,7 @@ public class UpdateLink extends AppCompatActivity {
     public void deleteLink(View v) {
         currComp.removeLink(currLink);
         Funcs.saveFullData(this);
-        Intent intent = new Intent(this, ControlPanel.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, ControlPanel.class);
     }
 
     /**
@@ -105,9 +103,7 @@ public class UpdateLink extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, ControlPanel.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, ControlPanel.class);
     }
 
 }

@@ -39,8 +39,7 @@ public class ControlPanel extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void openCreateLink(View v) {
-        Intent intent = new Intent(this, CreateLink.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, CreateLink.class);
     }
 
     /**
@@ -54,9 +53,9 @@ public class ControlPanel extends AppCompatActivity {
 
         Company comp = Login.currLoggedInComp;
         if (comp != null) {
-            linksTitleTV.setText(R.string.lpc2_existing_links_title + comp.getName() + ":");
+            linksTitleTV.setText(getString(R.string.lpc2_existing_links_title) + comp.getName() + ":");
             if (comp.getLinks().size() == 0) {
-                linksDisp += R.string.lpc2_no_existing_links;
+                linksDisp += getString(R.string.lpc2_no_existing_links);
             }
             int counter = 1;
             for (Link link : comp.getLinks()) {
@@ -65,7 +64,7 @@ public class ControlPanel extends AppCompatActivity {
             }
         } else {
             linksDisp = "";
-            linksDisp += R.string.lpc2_no_logged_company;
+            linksDisp += getString(R.string.lpc2_no_logged_company);
         }
         linksTV.setText(linksDisp);
     }
@@ -84,7 +83,7 @@ public class ControlPanel extends AppCompatActivity {
             linkNum = Integer.parseInt(linkNumStr);
         } catch (NumberFormatException e) {
             TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
-            errorTV.setText(R.string.lpc2_invalid_link_value);
+            errorTV.setText(getString(R.string.lpc2_invalid_link_value));
         }
         Company currComp = Login.currLoggedInComp;
         if (currComp != null) {
@@ -92,11 +91,10 @@ public class ControlPanel extends AppCompatActivity {
                 Link link = currComp.getLinks().get(linkNum - 1); // -1 because they're listed 1, 2, 3 not 0, 1, 2
                 UpdateLink.currComp = currComp;
                 UpdateLink.currLink = link;
-                Intent intent = new Intent(this, UpdateLink.class);
-                startActivity(intent);
+                Funcs.startActivityFunc(this, UpdateLink.class);
             } catch (IndexOutOfBoundsException e) {
                 TextView errorTV = (TextView) findViewById(R.id.lpc2_link_num_error);
-                errorTV.setText(R.string.lpc2_invalid_link_value);
+                errorTV.setText(getString(R.string.lpc2_invalid_link_value));
             }
 
         }
@@ -109,8 +107,6 @@ public class ControlPanel extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, Login.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, Login.class);
     }
 }

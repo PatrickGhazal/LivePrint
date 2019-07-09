@@ -1,7 +1,6 @@
 package griffmedia.ghazal.liveprint;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,8 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
-
-import java.util.Locale;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -64,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void openLP(View v) {
-        Intent intent = new Intent(this, LPHome.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, LPHome.class);
     }
 
     /**
@@ -75,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void openTH(View v) {
-        Intent intent = new Intent(this, NatTreasureHunt.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, NatTreasureHunt.class);
     }
 
     /**
@@ -86,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void openTest(View v) {
-        Intent intent = new Intent(this, TestActivity.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, TestActivity.class);
+    }
+
+    public void demoButton(View v) {
+        Funcs.startActivityFunc(this, Demo.class);
     }
 
 }

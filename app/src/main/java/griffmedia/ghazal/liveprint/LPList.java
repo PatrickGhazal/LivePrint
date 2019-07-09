@@ -84,9 +84,7 @@ public class LPList extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, LPHome.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, LPHome.class);
     }
 
 }
