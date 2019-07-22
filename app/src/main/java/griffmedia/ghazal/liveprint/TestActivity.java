@@ -111,9 +111,24 @@ public class TestActivity extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, MainActivity.class);
+    }
+
+    /**
+     * <code>onClick</code> method for the <code>readInsp</code> button.
+     * Reads the current data in the inspection report file and prints it.
+     *
+     * @param v view that contains the clicked button
+     */
+    public void readInspectionData(View v) {
+        try {
+            String inspectionReport = Funcs.read(this, "inspectionReport.txt");
+            System.out.println(inspectionReport);
+        } catch (FileNotFoundException e) {
+            System.out.println("fnf exc");
+        } catch (IOException e) {
+            System.out.println("io exc");
+        }
     }
 
 }

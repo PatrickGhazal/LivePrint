@@ -63,16 +63,17 @@ public class Register extends AppCompatActivity {
                 startActivity(loginIntent);
             } else {
                 TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
-                errorTV.setText(R.string.lpc1b_error_account_exists);
+                errorTV.setText(getString(R.string.lpc1b_error_account_exists));
             }
         } else {
             TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
-            errorTV.setText(R.string.lpc1b_error_invalid_creds);
+            errorTV.setText(getString(R.string.lpc1b_error_invalid_creds));
         }
     }
 
     /**
      * Checks for the validity of the credentials.
+     * TODO: add check for name in list of comps, impl list of comps file
      *
      * @param compET EditText instance containing the company name
      * @param pwET   EditText instance containing the password
@@ -100,9 +101,7 @@ public class Register extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, Login.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, Login.class);
     }
 
 }

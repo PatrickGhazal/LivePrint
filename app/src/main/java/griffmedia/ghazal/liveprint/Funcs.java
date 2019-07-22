@@ -1,9 +1,8 @@
 package griffmedia.ghazal.liveprint;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Intent;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -150,6 +149,18 @@ public class Funcs {
         osw.write(toWrite);
 
         osw.close();
+    }
+
+    /**
+     * Closes the previous <code>Activity</code> and starts the new one.
+     *
+     * @param previous Activity that calls the method and is being closed
+     * @param toOpen   class to open
+     */
+    public static void startActivityFunc(Activity previous, Class toOpen) {
+        Intent intent = new Intent(previous, toOpen);
+        previous.finish();
+        previous.startActivity(intent);
     }
 
 }

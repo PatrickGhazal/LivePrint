@@ -52,8 +52,6 @@ public class NatTreasureHunt extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, MainActivity.class);
     }
 }

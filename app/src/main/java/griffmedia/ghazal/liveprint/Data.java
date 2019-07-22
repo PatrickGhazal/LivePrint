@@ -14,8 +14,6 @@ public class Data {
 
     public static final String compLinksFileName = "CompaniesLinks.txt";
 
-    public static final String bgColourBeforeM = "#EEEEEE";
-
     private ArrayList<Company> partnerComps;
 
     private static Data instance;

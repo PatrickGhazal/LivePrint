@@ -42,8 +42,7 @@ public class LPHome extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void openCompanyList(View v) {
-        Intent intent = new Intent(this, LPList.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, LPList.class);
     }
 
     /**
@@ -53,8 +52,7 @@ public class LPHome extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void openLogin(View v) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, Login.class);
     }
 
     /**
@@ -67,18 +65,6 @@ public class LPHome extends AppCompatActivity {
         String lg = (currLang.equals("en") ? "fr" : "en");
         currLang = lg;
         updateLanguage(lg);
-    }
-
-    /**
-     * <code>onClick</code> method for the <code>Back</code> button.
-     * Calls <code>finish</code> on <code>this</code> Activity and launches the previous page (the one <code>this</code> was opened from).
-     *
-     * @param v view that contains the clicked button
-     */
-    public void backButton(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        finish();
-        startActivity(intent);
     }
 
     /**
@@ -95,19 +81,15 @@ public class LPHome extends AppCompatActivity {
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
         recreate();
-
     }
 
     /**
-     * Reloads the app when the language is modified.
+     * <code>onClick</code> method for the <code>Back</code> button.
+     * Calls <code>finish</code> on <code>this</code> Activity and launches the previous page (the one <code>this</code> was opened from).
+     *
+     * @param v view that contains the clicked button
      */
-    @Override
-    public void recreate() {
-        if (android.os.Build.VERSION.SDK_INT >= 14) {
-            super.recreate();
-        } else {
-            startActivity(getIntent());
-            finish();
-        }
+    public void backButton(View v) {
+        Funcs.startActivityFunc(this, MainActivity.class);
     }
 }

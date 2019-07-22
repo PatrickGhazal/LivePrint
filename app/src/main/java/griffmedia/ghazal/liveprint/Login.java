@@ -82,11 +82,10 @@ public class Login extends AppCompatActivity {
             Data data = Data.getInstance();
 
             currLoggedInComp = data.getCompByName(givenUser);
-            Intent intent = new Intent(this, ControlPanel.class);
-            startActivity(intent);
+            Funcs.startActivityFunc(this, ControlPanel.class);
         } else {
             TextView tvError = (TextView) findViewById(R.id.login_error);
-            tvError.setText(R.string.lpc1_invalid_credentials);
+            tvError.setText(getString(R.string.lpc1_invalid_credentials));
         }
     }
 
@@ -98,8 +97,7 @@ public class Login extends AppCompatActivity {
      */
     public void override(View v) {
         currLoggedInComp = null;
-        Intent intent = new Intent(this, ControlPanel.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, ControlPanel.class);
     }
 
     /**
@@ -109,8 +107,7 @@ public class Login extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void register(View v) {
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
+        Funcs.startActivityFunc(this, Register.class);
     }
 
     /**
@@ -120,9 +117,7 @@ public class Login extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void backButton(View v) {
-        Intent intent = new Intent(this, LPHome.class);
-        finish();
-        startActivity(intent);
+        Funcs.startActivityFunc(this, LPHome.class);
     }
 
 }
