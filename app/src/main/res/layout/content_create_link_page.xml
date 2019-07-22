@@ -43,7 +43,7 @@
             android:text="@string/lpc3_selected_image" />
 
         <TextView
-            android:id="@+id/selected_image"
+            android:id="@+id/selected_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

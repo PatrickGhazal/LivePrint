@@ -73,6 +73,7 @@ public class Register extends AppCompatActivity {
 
     /**
      * Checks for the validity of the credentials.
+     * TODO: add check for name in list of comps, impl list of comps file
      *
      * @param compET EditText instance containing the company name
      * @param pwET   EditText instance containing the password

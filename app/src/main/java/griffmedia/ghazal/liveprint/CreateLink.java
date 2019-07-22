@@ -68,6 +68,12 @@ public class CreateLink extends AppCompatActivity {
 
     }
 
+    public void loadPhoto(View v) {
+        TextView tvVideo = findViewById(R.id.selected_photo);
+        tvVideo.setText("chosen_photo.jpg");
+    }
+
+
     /**
      * <code>onClick</code> method for the <code>Create Link</code> button.
      * Creates a new link based on the provided photo and video file names.
@@ -75,7 +81,7 @@ public class CreateLink extends AppCompatActivity {
      * @param v view that contains the clicked button
      */
     public void createLink(View v) {
-        TextView tvImage = findViewById(R.id.selected_image);
+        TextView tvImage = findViewById(R.id.selected_photo);
         TextView tvVideo = findViewById(R.id.selected_video);
 
         String selectedImage = tvImage.getText().toString();
@@ -153,6 +159,7 @@ public class CreateLink extends AppCompatActivity {
      *
      * @param v view that contains the clicked button
      */
+
     public void loadPhoto(View v) {
         if (Build.VERSION.SDK_INT >= 23) {
             String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -271,6 +278,4 @@ public class CreateLink extends AppCompatActivity {
     public void backButton(View v) {
         Funcs.startActivityFunc(this, ControlPanel.class);
     }
-
-
 }
