@@ -159,18 +159,19 @@ public class CreateLink extends AppCompatActivity {
      *
      * @param v view that contains the clicked button
      */
-//    public void loadPhoto(View v) {
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
-//            if (!hasPermissions(this, permissions)) {
-//                ActivityCompat.requestPermissions((Activity) this, permissions, GET_FROM_GALLERY );
-//            } else {
-//                loadPhotoFullIntent();
-//            }
-//        } else {
-//            loadPhotoFullIntent();
-//        }
-//    }
+
+    public void loadPhoto(View v) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if (!hasPermissions(this, permissions)) {
+                ActivityCompat.requestPermissions((Activity) this, permissions, GET_FROM_GALLERY );
+            } else {
+                loadPhotoFullIntent();
+            }
+        } else {
+            loadPhotoFullIntent();
+        }
+    }
 
     //TODO: works with photo capture but not selection from gallery
 
