@@ -29,7 +29,7 @@ public class Funcs {
      */
     public static void setup(Context context) {
         try {
-            String compLinkData = Funcs.read(context, Data.compLinksFileName);
+            String compLinkData = read(context, Data.compLinksFileName);
             loadCompLinkData(compLinkData);
         } catch (IOException e) {
             System.out.println("Could not load data for companies and links.");
@@ -53,7 +53,6 @@ public class Funcs {
                 String compName = parts[0].trim(), compPass = parts[1].trim(), photoName = "", videoName = "";
                 Company foundComp = new Company(compName);
                 foundComp.setPassword(compPass);
-                data.addComp(foundComp);
                 String[] links = parts[2].split("---");
                 for (String link : links) {
                     String[] photoVideoNames = link.split("//");
@@ -64,6 +63,7 @@ public class Funcs {
                         foundComp.addLink(foundLink);
                     }
                 }
+                data.addComp(foundComp);
             }
         }
     }
@@ -162,5 +162,23 @@ public class Funcs {
         previous.finish();
         previous.startActivity(intent);
     }
+
+    public static ArrayList<String> readClientCompaniesFile(Context context) {
+        ArrayList<String> foundComps = new ArrayList<String>();
+
+        try {
+            String clientCompsData = read(context, Data.clientCompsFileName);
+            String[] clientComps = clientCompsData.split("//");
+            for (String comp : clientComps) {
+                foundComps.add(comp);
+            }
+        } catch (IOException e) {
+            System.out.println("Could not load data for client companies.");
+        }
+
+        return foundComps;
+    }
+
+
 
 }

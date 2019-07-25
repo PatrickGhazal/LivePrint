@@ -46,6 +46,7 @@
     <string name="lpc1b_button_register">Register</string>
     <string name="lpc1b_error_account_exists">Error: this company already has a registered account.</string>
     <string name="lpc1b_error_invalid_creds">Error: invalid credentials.</string>
+    <string name="lpc1b_error_not_client">Error: this company has no partnership with LivePrint.</string>
     <string name="lpc2_intro_create">Create a new Link by pressing below.</string>
     <string name="lpc2_intro_modify">Alternatively, you can view/modify your existing links below.</string>
     <string name="lpc2_existing_links_title">Links of </string>

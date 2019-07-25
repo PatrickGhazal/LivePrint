@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 
+import java.util.ArrayList;
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -40,56 +42,66 @@ public class Register extends AppCompatActivity {
         EditText companyET = (EditText) findViewById(R.id.lpc1b_company);
         EditText passwordET = (EditText) findViewById(R.id.lpc1b_password);
 
-        if (validCreds(companyET, passwordET)) {
+        String givenCompany = companyET.getText().toString();
+        String givenPassword = passwordET.getText().toString();
+
+        if (validCreds(givenCompany, givenPassword)) {
 
             Data data = Data.getInstance();
 
-            String compName = companyET.getText().toString();
-            boolean exists = false;
-            for (Company co : data.getPartnerComps()) {
-                if (co.getName().equals(compName)) {
-                    exists = true;
-                    break;
-                }
-            }
+            Company newCo = new Company(givenCompany);
+            newCo.setPassword(givenPassword);
+            data.addComp(newCo);
+            Funcs.saveFullData(this);
 
-            if (!exists) {
-                Company newCo = new Company(compName);
-                newCo.setPassword(passwordET.getText().toString());
-                data.addComp(newCo);
-                Funcs.saveFullData(this);
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
 
-                Intent loginIntent = new Intent(this, Login.class);
-                startActivity(loginIntent);
-            } else {
-                TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
-                errorTV.setText(getString(R.string.lpc1b_error_account_exists));
-            }
-        } else {
-            TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
-            errorTV.setText(getString(R.string.lpc1b_error_invalid_creds));
         }
     }
 
     /**
      * Checks for the validity of the credentials.
-     * TODO: add check for name in list of comps, impl list of comps file
      *
-     * @param compET EditText instance containing the company name
-     * @param pwET   EditText instance containing the password
+     * @param company  String containing the company name
+     * @param password String containing the password
      * @return true if the credentials are valid
      */
-    private boolean validCreds(EditText compET, EditText pwET) {
+    private boolean validCreds(String company, String password) {
+
+        TextView errorTV = (TextView) findViewById(R.id.lpc1b_error);
+        errorTV.setText("");
+
         boolean valid = true;
 
-        String comp = compET.getText().toString();
-        String pw = pwET.getText().toString();
-
-        if (comp.length() < 2)
+        if (company.length() < 2 || password.length() < 6) {
+            String newErrorMessage = errorTV.getText().toString() + "\n" + getString(R.string.lpc1b_error_invalid_creds);
+            errorTV.setText(newErrorMessage);
             valid = false;
+        }
 
-        if (pw.length() < 6)
+        Data data = Data.getInstance();
+
+        if (data.getCompByName(company) != null) {
+            String newErrorMessage = errorTV.getText().toString() + "\n" + getString(R.string.lpc1b_error_account_exists);
+            errorTV.setText(newErrorMessage);
             valid = false;
+        }
+
+        ArrayList<String> allClientComps = Funcs.readClientCompaniesFile(this);
+        boolean found = false;
+        for (String comp : allClientComps) {
+            if (company.equals(comp)) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            String newErrorMessage = errorTV.getText().toString() + "\n" + getString(R.string.lpc1b_error_not_client);
+            errorTV.setText(newErrorMessage);
+            valid = false;
+        }
 
         return valid;
     }

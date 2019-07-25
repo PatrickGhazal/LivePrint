@@ -53,7 +53,7 @@ public class ControlPanel extends AppCompatActivity {
 
         Company comp = Login.currLoggedInComp;
         if (comp != null) {
-            linksTitleTV.setText(getString(R.string.lpc2_existing_links_title) + comp.getName() + ":");
+            linksTitleTV.setText(getString(R.string.lpc2_existing_links_title) + " " + comp.getName() + ":");
             if (comp.getLinks().size() == 0) {
                 linksDisp += getString(R.string.lpc2_no_existing_links);
             }

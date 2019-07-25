@@ -172,10 +172,10 @@ public class CreateLink extends AppCompatActivity {
 //        }
 //    }
 
-    //TODO: works with photo capture but not selection from gallery
-
     /**
      * Does the actual work of loading the photo. Called by <code>loadPhoto</code>.
+     *
+     * TODO: works with photo capture but not selection from gallery
      */
     private void loadPhotoFullIntent() {
 //        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

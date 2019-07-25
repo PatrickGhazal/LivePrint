@@ -13,6 +13,7 @@ public class Data {
     public static final int bufferSize = 8096;
 
     public static final String compLinksFileName = "CompaniesLinks.txt";
+    public static final String clientCompsFileName = "ClientCompanies.txt";
 
     private ArrayList<Company> partnerComps;
 
