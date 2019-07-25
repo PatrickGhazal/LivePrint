@@ -160,7 +160,6 @@ public class Demo extends AppCompatActivity {
         if (requestCode == GET_FROM_GALLERY && resultCode == RESULT_OK) {
             try {
                 mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
-//                System.out.println(mImageBitmap.getHeight());
                 if (mImageBitmap != null) {
                     ImageView imageView = findViewById(R.id.demo_image);
                     imageView.setImageBitmap(mImageBitmap);

@@ -159,19 +159,18 @@ public class CreateLink extends AppCompatActivity {
      *
      * @param v view that contains the clicked button
      */
-
-    public void loadPhoto(View v) {
-        if (Build.VERSION.SDK_INT >= 23) {
-            String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
-            if (!hasPermissions(this, permissions)) {
-                ActivityCompat.requestPermissions((Activity) this, permissions, GET_FROM_GALLERY );
-            } else {
-                loadPhotoFullIntent();
-            }
-        } else {
-            loadPhotoFullIntent();
-        }
-    }
+//    public void loadPhoto(View v) {
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            String[] permissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//            if (!hasPermissions(this, permissions)) {
+//                ActivityCompat.requestPermissions((Activity) this, permissions, GET_FROM_GALLERY );
+//            } else {
+//                loadPhotoFullIntent();
+//            }
+//        } else {
+//            loadPhotoFullIntent();
+//        }
+//    }
 
     //TODO: works with photo capture but not selection from gallery
 
@@ -257,11 +256,9 @@ public class CreateLink extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        System.out.println(requestCode == GET_FROM_GALLERY && resultCode == RESULT_OK);
         if (requestCode == GET_FROM_GALLERY && resultCode == RESULT_OK) {
             try {
                 mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
-//                System.out.println(mImageBitmap.getHeight());
                 ImageView imageView = findViewById(R.id.disp_image);
                 imageView.setImageBitmap(mImageBitmap);
             } catch (IOException e) {

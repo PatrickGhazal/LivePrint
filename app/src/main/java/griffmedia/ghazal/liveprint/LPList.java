@@ -50,7 +50,6 @@ public class LPList extends AppCompatActivity {
         Company selectedComp = data.getCompByName(selectedCompStr);
         if (selectedComp != null) {
             chosenCompany = selectedComp;
-            System.out.println(selectedCompStr);
         }
 
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
